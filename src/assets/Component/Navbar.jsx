@@ -11,17 +11,17 @@ const MenuLinks = [
   {
     id: 2,
     name: "Services",
-    link: "/Shop",
+    link: "/",
   },
   {
     id: 3,
     name: "Packages",
-    link: "/About",
+    link: "/",
   },
   {
     id: 4,
     name: "About us",
-    link: "/Blog",
+    link: "/",
   },
   {
     id: 5,
@@ -31,12 +31,12 @@ const MenuLinks = [
   {
     id: 6,
     name: "Bloges",
-    link: "/Shop",
+    link: "/",
   },
   {
     id: 7,
     name: "My Account",
-    link: "/About",
+    link: "/",
   },
 ];
 
@@ -47,7 +47,7 @@ const Navbar = () => {
   // structure
   return (
     <>
-      <div className="  bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40 shadow-md">
+      <div className="  bg-white dark:bg-black dark:text-white duration-200 relative z-40 shadow-md">
         <div className="py-4">
           <div className="container flex justify-between items-center  ">
             {/* logo and link section */}
