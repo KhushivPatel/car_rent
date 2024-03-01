@@ -1,8 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
 import logo2 from "../images/logo_2.png";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Menu links data
 const MenuLinks = [
@@ -10,9 +11,8 @@ const MenuLinks = [
   { id: 2, name: "Services", link: "/" },
   { id: 3, name: "Packages", link: "/" },
   { id: 4, name: "About us", link: "/" },
-  { id: 5, name: "Contact us", link: "/" },
+  { id: 5, name: "Contact us", link: "/Contactus" },
   { id: 6, name: "Bloges", link: "/" },
-  { id: 7, name: "My Account", link: "/" },
 ];
 
 const Navbar = ({ theme, setTheme }) => {
@@ -20,6 +20,20 @@ const Navbar = ({ theme, setTheme }) => {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+  const [pageState, setPageState] = useState("Sign_in");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setPageState("MyAccount");
+      } else {
+        setPageState("Sign_in");
+      }
+    });
+  }, [auth]);
 
   return (
     <div className="bg-white dark:bg-black dark:text-white duration-200 relative z-40">
@@ -37,6 +51,7 @@ const Navbar = ({ theme, setTheme }) => {
                 className="cursor-pointer h-14"
               />
             </Link>
+
             {/* Menu Items */}
             <div className="hidden lg:block">
               <ul className="flex items-center gap-4">
@@ -52,6 +67,19 @@ const Navbar = ({ theme, setTheme }) => {
                 ))}
               </ul>
             </div>
+            <div
+              className={`inline-block px-4 font-semibold text-black hover:text-primary dark:text-white dark:hover:text-primary duration-200 ${
+                location.pathname === "/Sign_in" ||
+                (location.pathname === "/MyAccount" &&
+                  "text-white  border-b-solid border-b-white")
+              }`}
+              onClick={() =>
+                navigate(pageState === "Sign_in" ? "/Sign_in" : "/MyAccount")
+              }
+            >
+              {pageState === "Sign_in" ? "Sign In" : "MyAccount"}
+            </div>
+
             {/* Booking button */}
             <li className="flex ml-16 px-3 font-semibold text-orange-50 hover:text-primary dark:text-white dark:hover:text-primary duration-200 h-fit bg-primary hover:bg-black rounded-full py-2 dark:bg-primary dark:hover:bg-white shadow-lg shadow-gray-400 dark:shadow-lg dark:shadow-zinc-700">
               <span>Booking</span>

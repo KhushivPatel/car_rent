@@ -1,35 +1,49 @@
 import React from "react";
-import { FaCameraRetro } from "react-icons/fa";
-import { GiNotebook } from "react-icons/gi";
-import { SlNote } from "react-icons/sl";
+import { IoCarSport } from "react-icons/io5";
+import { FaAmazonPay } from "react-icons/fa";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { TbTruckDelivery } from "react-icons/tb";
 
 const skillsData = [
   {
-    name: "Best Price",
+    name: "Unmatched Quality",
     icon: (
-      <FaCameraRetro className="text-5xl text-primary group-hover:text-black duration-300" />
+      <IoCarSport className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description:
+      "With safety our utmost priority, we ensure our drivers are qualified and trained professionals who always abide by traffic rules and regulations.",
     aosDelay: "0",
   },
   {
-    name: "Fast and Safe",
+    name: "Secure Payment",
     icon: (
-      <GiNotebook className="text-5xl text-primary group-hover:text-black duration-300" />
+      <FaAmazonPay className="text-5xl text-primary group-hover:text-black duration-300" />
     ),
     link: "#",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description:
+      "We securely process all of your credit card information through our payment gateway. We do not store or retain any credit card information.",
     aosDelay: "500",
   },
   {
-    name: "Experience Drivers",
+    name: "Reliable Transportation",
     icon: (
-      <SlNote className="text-5xl text-primary group-hover:text-black duration-500" />
+      <AiOutlineSafetyCertificate className="text-5xl text-primary group-hover:text-black duration-500" />
     ),
     link: "#",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    description:
+      "You can rest assured knowing that our taxi service is reliable because we are available 24/7, 365 days a year at reasonable rates for everyone.",
     aosDelay: "1000",
+  },
+  {
+    name: "Free Home Delivery",
+    icon: (
+      <TbTruckDelivery className="text-5xl text-primary group-hover:text-black duration-500" />
+    ),
+    link: "#",
+    description:
+      "You can rest assured knowing that our taxi service is reliable because we are available 24/7, 365 days a year at reasonable rates for everyone.",
+    aosDelay: "1500",
   },
 ];
 const Services = () => {
@@ -46,7 +60,7 @@ const Services = () => {
               Why Choose Us
             </h1>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {skillsData.map((skill) => (
               <div
                 key={skill.name}

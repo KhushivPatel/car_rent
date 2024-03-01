@@ -1,6 +1,6 @@
 import React from "react";
 import carLightImage from "../../assets/images/car_light.svg";
-import carDarkImage from "../../assets/images/dark_car.jpg";
+import carDarkImage from "../../assets/images/light_dp.png";
 import Bestcar from "./Bestcar";
 import Services from "./Services";
 import CarList from "./CarList";
@@ -12,8 +12,10 @@ const Home = ({ theme }) => {
 
   return (
     <>
-      <div className="dark:bg-black dark:text-white duration-300 relative 
-      z-20 ">
+      <div
+        className="dark:bg-black dark:text-white duration-300 relative 
+      z-20 "
+      >
         <div className="container min-h-[620px] flex ">
           <div className="grid place-items-center grid-cols-1 sm:grid-cols-2">
             {/* Car Image Section */}
