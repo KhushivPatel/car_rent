@@ -43,7 +43,7 @@ const Contactus = () => {
   };
 
   return (
-    <section className="dark:bg-black h-full">
+    <section className="dark:bg-semi h-full">
       <div className="justify-center flex-wrap items-center text-center py-8">
         <h1
           className="text-5xl text-primary lg:text-5xl font-semibold font-serif"

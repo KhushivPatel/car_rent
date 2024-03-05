@@ -5,6 +5,8 @@ import Bestcar from "./Bestcar";
 import Services from "./Services";
 import CarList from "./CarList";
 import Contact from "./Contact";
+import Member from "./Member";
+import Slider from "../../assets/Component/Slider";
 
 const Home = ({ theme }) => {
   // Determine which car image to use based on the theme
@@ -13,7 +15,7 @@ const Home = ({ theme }) => {
   return (
     <>
       <div
-        className="dark:bg-black dark:text-white duration-300 relative 
+        className="dark:bg-semi dark:text-white duration-300 relative 
       z-20 "
       >
         <div className="container min-h-[620px] flex ">
@@ -56,9 +58,29 @@ const Home = ({ theme }) => {
           </div>
         </div>
 
-        <Bestcar />
-        <Services />
         <CarList />
+        <Services />
+        <div className="container bg-white rounded-md  ">
+          <h1
+            data-aos="fade-up"
+            className="text-3xl  pt-5 sm:text-4xl font-semibold font-serif mb-3 text-semi justify-center items-center flex"
+          >
+            Rental Type
+          </h1>
+          <div className="flex justify-between px-32">
+            <div className="text-center">
+              <img src="/src/assets/images/t1.gif" className="h-40" />
+              <p className="text-4xl mt-2 text-blue-500">Self Drive</p>
+            </div>
+            <div className="text-center">
+              <img src="/src/assets/images/t2.gif" className="h-40" />
+              <p className="text-4xl mt-2 text-blue-500">With Driver</p>
+            </div>
+          </div>
+        </div>
+        <Bestcar />
+        <Member />
+        <Slider />
         <Contact />
       </div>
     </>

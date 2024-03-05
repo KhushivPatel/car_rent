@@ -36,7 +36,7 @@ const Navbar = ({ theme, setTheme }) => {
   }, [auth]);
 
   return (
-    <div className="bg-white dark:bg-black dark:text-white duration-200 relative z-40">
+    <div className="bg-white dark:bg-semi dark:text-white duration-200 relative z-40">
       <div className="py-2">
         <div className="container flex justify-between items-center">
           {/* Logo and link section */}
@@ -59,7 +59,7 @@ const Navbar = ({ theme, setTheme }) => {
                   <li key={link.id}>
                     <Link
                       to={link.link}
-                      className="inline-block px-4 font-semibold text-black hover:text-primary dark:text-white dark:hover:text-primary duration-200"
+                      className="inline-block px-4 font-semibold text-semi hover:text-primary dark:text-white dark:hover:text-primary duration-200"
                     >
                       {link.name}
                     </Link>

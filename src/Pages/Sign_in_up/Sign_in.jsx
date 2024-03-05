@@ -43,7 +43,7 @@ const Sign_in = () => {
   }
 
   return (
-    <section className=" dark:bg-black  h-full">
+    <section className=" dark:bg-semi h-full">
       <div
         className="flex justify-center flex-wrap  py-8 items-center  max-w-6xl mx-auto   shadow-lg   rounded-2xl bg-primary   "
         // style={{
@@ -67,7 +67,7 @@ const Sign_in = () => {
           <button className=" mt-7">
             <Link
               to="/Sign_up"
-              className="rounded-full bg-white hover:bg-black hover:text-primary transition duration-500 py-2 px-6 text-black"
+              className="rounded-full bg-white hover:bg-semi hover:text-primary transition duration-500 py-2 px-6 text-black"
             >
               Sign-Up
             </Link>
@@ -76,7 +76,7 @@ const Sign_in = () => {
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%]  bg-white bg-opacity-50 h-fit  px-5 mb-2 rounded-xl">
           <form>
-            <h1 className="text-center font-semibold text-3xl mt-3 mb-4 text-black ">
+            <h1 className="text-center font-semibold text-3xl mt-3 mb-4 text-semi ">
               Sign In
             </h1>
             <div className="relative mt-6 mb-6">
@@ -127,7 +127,7 @@ const Sign_in = () => {
               </p>
             </div>
             <button
-              className="w-full bg-primary px-7 py-3 text-white text-sm font-medium uppercase rounded-full shadow-md hover:bg-black transition duration-150 ease-in-out hover:shadow-lg active:bg-black "
+              className="w-full bg-primary px-7 py-3 text-white text-sm font-medium uppercase rounded-full shadow-md hover:bg-semi transition duration-150 ease-in-out hover:shadow-lg active:bg-semi "
               type="submit"
               onClick={onSubmit}
             >

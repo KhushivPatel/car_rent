@@ -4,7 +4,7 @@ import carAboutDark from "../../assets/images/about_car_dark.svg";
 
 const Bestcar = () => {
   return (
-    <div className="dark:bg-dark dark:text-white duration-125 sm:min-h-[600px] sm:grid sm:place-items-center">
+    <div className="dark:bg-semi dark:text-white duration-125 sm:min-h-[600px] sm:grid sm:place-items-center">
       <div className="container">
         <div className="grid grid-cols-1 sm:grid-cols-2 place-items-center">
           <div>
@@ -28,7 +28,7 @@ const Bestcar = () => {
             </p>
             <button
               // data-aos="fade-up"
-              className="text-primary cursor-pointer border-2 border-primary py-2 px-6 rounded-md hover:text-black hover:bg-primary"
+              className="text-primary cursor-pointer border-2 border-primary py-2 px-6 rounded-md hover:text-semi hover:bg-primary"
             >
               Book Now
             </button>

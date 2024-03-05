@@ -14,6 +14,8 @@ import Fpass from "./Pages/Sign_in_up/Fpass";
 import Just from "./Pages/Sign_in_up/Just";
 import MyAccount from "./Pages/Home/MyAccount";
 import Contactus from "./Pages/Home/Contactus";
+import Member from "./Pages/Home/Member";
+import Slider from "./assets/Component/Slider";
 
 const App = () => {
   // dark mode start
@@ -55,6 +57,8 @@ const App = () => {
           <Route path="/Fpass" element={<Fpass theme={theme} />} />
           <Route path="/Contactus" element={<Contactus theme={theme} />} />
           <Route path="/MyAccount" element={<MyAccount theme={theme} />} />
+          <Route path="/Member" element={<Member theme={theme} />} />
+          <Route path="/Slider" element={<Slider theme={theme} />} />
         </Routes>
         <Footer theme={theme} setTheme={setTheme} />
       </Router>

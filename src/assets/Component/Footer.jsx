@@ -41,7 +41,7 @@ const Footerlink = [
 
 const Footer = ({ theme, setTheme }) => {
   return (
-    <div className="dark:bg-black">
+    <div className="dark:bg-semi bg-gray-100">
       <div className="container">
         <div className="grid md:grid-cols-3 pb-20 pt-5">
           {/* company details */}

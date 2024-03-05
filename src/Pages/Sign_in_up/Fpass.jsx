@@ -24,7 +24,7 @@ const Fpass = () => {
   };
 
   return (
-    <section className="dark:bg-black h-full">
+    <section className="dark:bg-semi h-full">
       <div className="flex justify-center flex-wrap py-8 items-center max-w-6xl mx-auto shadow-lg rounded-2xl bg-primary">
         <div className="md:w-[68%] lg:w-[54%]">
           <h1 className="text-7xl lg:text-7xl font-semibold font-serif" data-aos="fade-up">
@@ -36,7 +36,7 @@ const Fpass = () => {
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] bg-white bg-opacity-50 h-fit px-5 mb-2 rounded-xl">
           <form onSubmit={onSubmit}>
-            <h1 className="text-center font-semibold text-3xl mt-3 mb-3 text-black">Forgot Password</h1>
+            <h1 className="text-center font-semibold text-3xl mt-3 mb-3 text-semi">Forgot Password</h1>
             <div className="relative mt-6 mb-6">
               <MdEmail className="absolute mt-3.5 ml-2 text-base cursor-pointer" />
               <input
@@ -60,7 +60,7 @@ const Fpass = () => {
               </p>
             </div>
             <button
-              className="w-full bg-primary px-7 py-3 text-white text-sm font-medium uppercase rounded-full shadow-md hover:bg-black transition duration-150 ease-in-out hover:shadow-lg active:bg-black"
+              className="w-full bg-primary px-7 py-3 text-white text-sm font-medium uppercase rounded-full shadow-md hover:bg-semi transition duration-150 ease-in-out hover:shadow-lg active:bg-semi"
               type="submit"
             >
               Send Reset Password

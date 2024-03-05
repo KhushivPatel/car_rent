@@ -27,7 +27,7 @@ const carList = [
 
 const CarList = () => {
   return (
-    <div className="pb-24">
+    <div className="">
       <div className="container">
         {/* Section Heading */}
         <h1
