@@ -3,8 +3,10 @@ import { db } from "../../Firebase";
 import { toast } from "react-toastify";
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router";
-import { doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { MdDelete } from "react-icons/md";
 
 const MyAccount = () => {
   const [changeDetail, setChangeDetail] = useState(false);
@@ -61,7 +63,33 @@ const MyAccount = () => {
   };
 
   // Profile picture upload related state and functions
+  const [bookings, setBookings] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const value = collection(db, "demo");
+        const querySnapshot = await getDocs(value);
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBookings(data);
+      } catch (error) {
+        console.error("Error fetching documents: ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, "demo", id)); // Fix the reference by providing the document ID
+      setBookings(bookings.filter((booking) => booking.id !== id));
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  };
   return (
     <>
       <div className=" dark:bg-semi pt-12 pb-12">
@@ -78,7 +106,7 @@ const MyAccount = () => {
               data-aos="fade-up"
               data-aos-delay="600"
             >
-              Ready to  go out ? Sign out now.
+              Ready to go out ? Sign out now.
             </h3>
             <button className=" mt-7">
               <Link
@@ -135,13 +163,66 @@ const MyAccount = () => {
                   if (changeDetail) handleSubmit();
                   setChangeDetail((prevState) => !prevState);
                 }}
-                className="text-white hover:text-primary w-full bg-primary hover:bg-gray-300 text-lg rounded-2xl py-1.5 transition duration-200 ease-in-out cursor-pointer  mb-8"
+                className="text-white hover:text-primary w-full bg-primary hover:bg-semi text-lg rounded-2xl py-1.5 transition duration-200 ease-in-out cursor-pointer  mb-8"
               >
                 {changeDetail ? "Apply Change" : "Edit"}
               </button>
             </form>
           </div>
         </section>
+        {/*  */}
+        <div className="container mx-auto px-4 py-8 ">
+          <h1 className="text-3xl font-bold  text-center dark:text-primary mb-7">
+            My bookings
+          </h1>
+          <div className="justify-center ">
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <div
+                  className="bg-white rounded-lg shadow-md p-6 mb-4 "
+                  key={booking.id}
+                >
+                  <p className=" mb-2 text-xl font-semibold">
+                    <span className="font-semibold">Car:</span>{" "}
+                    {booking.selectedCar}
+                  </p>
+                  <p className="mb-2 font-semibold">
+                    <span className="font-semibold">Pickup Place:</span>{" "}
+                    {booking.selectedPickupPlace}
+                  </p>
+                  <p className="mb-2 font-semibold">
+                    <span className="font-semibold">Drop-off Place:</span>{" "}
+                    {booking.selectedDropoffPlace}
+                  </p>
+                  <p className="mb-2 font-semibold">
+                    <span className="font-semibold">Package:</span>{" "}
+                    {booking.selectedPackage}
+                  </p>
+                  <p className="text-md font-semibold mb-2">
+                    Pickup Date:{" "}
+                    {new Date(
+                      booking.pickupdate.seconds * 1000
+                    ).toLocaleString()}
+                  </p>
+                  <p className="text-md font-medium mb-2">
+                    Drop-off Date:{" "}
+                    {new Date(
+                      booking.dropoffdate.seconds * 1000
+                    ).toLocaleString()}
+                  </p>
+                  <button
+                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+                    onClick={() => handleDelete(booking.id)}
+                  >
+                    <MdDelete className="text-2xl" />
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>No bookings found</p>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

@@ -1,25 +1,70 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from React Router
+
 import whiteCar from "../../assets/images/car_light.png";
 import car2 from "../../assets/images/car_light.png";
 import car3 from "../../assets/images/car_light.png";
+import { FaCloudMoon } from "react-icons/fa";
+import { IoIosMan } from "react-icons/io";
+import { LuParkingCircle } from "react-icons/lu";
+import { FaRoad } from "react-icons/fa";
 
-// Data for car list
+import { FaCarSide } from "react-icons/fa";
+<FaCarSide />;
+
 const carList = [
   {
     name: "BMW UX",
-    price: 100,
+    price: 250,
+    person: 4,
+    parking: "Extra Charge",
+    km: 17,
     image: whiteCar,
     aosDelay: 0,
   },
   {
     name: "KIA UX",
     price: 140,
+    person: 6,
+    parking: "Extra Charge",
+    km: 17,
     image: car2,
     aosDelay: 500,
   },
   {
     name: "BMW UX",
     price: 100,
+    person: 7,
+    parking: "Extra Charge",
+    km: 17,
+    image: car3,
+    aosDelay: 1000,
+  },
+  // Add three more cars
+  {
+    name: "Toyota UX",
+    price: 120,
+    person: 2,
+    parking: "Extra Charge",
+    km: 17,
+    image: whiteCar,
+    aosDelay: 0,
+  },
+  {
+    name: "Honda UX",
+    price: 110,
+    person: 4,
+    parking: "Extra Charge",
+    km: 17,
+    image: car2,
+    aosDelay: 500,
+  },
+  {
+    name: "Tesla UX",
+    price: 180,
+    person: 7,
+    parking: "Extra Charge",
+    km: 17,
     image: car3,
     aosDelay: 1000,
   },
@@ -60,24 +105,47 @@ const CarList = () => {
               </div>
               {/* Car Details */}
               <div className="space-y-2">
-                <h1 className="text-primary font-semibold">{car.name}</h1>
-                <div className="flex justify-between items-center text-xl font-semibold">
-                  <p>${car.price}/Day</p>
-                  <a href="#">Details</a>
+                {/* Wrap the car name with Link */}
+                <Link
+                  to={`/car/${car.name}`}
+                  className="text-primary font-semibold"
+                >
+                  {car.name}
+                </Link>
+                <div className=" justify-between items-center text-md text-gray-500 font-semibold grid grid-cols-2">
+                  <p className="flex ">
+                    <FaCloudMoon className="mx-2 mt-1" />
+                    {car.price}rs/Night
+                  </p>
+                  <p className="flex ">
+                    <IoIosMan className="mx-2 mt-1" />
+                    {car.person}
+                  </p>
+                  <p className="flex ">
+                    <LuParkingCircle className="mx-2 mt-1" />
+                    {car.parking}
+                  </p>
+                  <p className="flex ">
+                    <FaRoad className="mx-2 mt-1" />
+                    {car.km}rs/km
+                  </p>
                 </div>
               </div>
+              {/* Add Link to Details page */}
+              <Link
+                to={`/car/${car.name}`}
+                className="justify-center flex text-xl text-primary text-center"
+              >
+                Details
+              </Link>
               {/* Car Distance */}
-              <p className="text-xl font-semibold absolute top-0 left-3">
-                12Km
+              <p className="text-xl font-semibold absolute top-0 left-3 ">
+                12Km/Day
               </p>
             </div>
           ))}
         </div>
         {/* End of car listing */}
-        {/* CTA Button */}
-        <div className="grid place-items-center mt-8" data-aos="fade-up">
-          <button className="button-outline">Get Started</button>
-        </div>
       </div>
     </div>
   );

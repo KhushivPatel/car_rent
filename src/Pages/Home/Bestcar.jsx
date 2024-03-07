@@ -1,6 +1,7 @@
 import React from "react";
 import carabout from "../../assets/images/about_car.png";
 import carAboutDark from "../../assets/images/about_car_dark.svg";
+import { Link } from "react-router-dom";
 
 const Bestcar = () => {
   return (
@@ -26,12 +27,16 @@ const Bestcar = () => {
               night. Our taxi service is available 24 hours a day, 365 days a
               year
             </p>
-            <button
-              // data-aos="fade-up"
-              className="text-primary cursor-pointer border-2 border-primary py-2 px-6 rounded-md hover:text-semi hover:bg-primary"
-            >
-              Book Now
-            </button>
+
+            <Link to="/Form">
+              <button
+                className="rounded-md bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
+                data-aos="fade-up"
+                data-aos-duration="1500"
+              >
+                Book Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

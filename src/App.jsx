@@ -18,6 +18,7 @@ import Member from "./Pages/Home/Member";
 import Slider from "./assets/Component/Slider";
 import Aboutus from "./Pages/Home/Aboutus";
 import Form from "./assets/Component/Form";
+import Count from "./assets/Component/Count";
 
 const App = () => {
   // dark mode start
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/Slider" element={<Slider theme={theme} />} />
           <Route path="/Aboutus" element={<Aboutus theme={theme} />} />
           <Route path="/Form" element={<Form theme={theme} />} />
+          <Route path="/Count" element={<Count theme={theme} />} />
         </Routes>
         <Footer theme={theme} setTheme={setTheme} />
       </Router>

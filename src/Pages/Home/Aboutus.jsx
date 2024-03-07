@@ -19,6 +19,7 @@ const Aboutus = () => {
         <h1
           className="absolute top-1/2 left-44 transform -translate-x-1/2 -translate-y-1/2 text-semi text-start text-7xl"
           data-aos="fade-left"
+         
         >
           About us
         </h1>

@@ -7,6 +7,8 @@ import CarList from "./CarList";
 import Contact from "./Contact";
 import Member from "./Member";
 import Slider from "../../assets/Component/Slider";
+import Count from "../../assets/Component/Count";
+import { Link } from "react-router-dom";
 
 const Home = ({ theme }) => {
   // Determine which car image to use based on the theme
@@ -47,17 +49,20 @@ const Home = ({ theme }) => {
               >
                 Book Your Drive Now!
               </h3>
-              <button
-                className="rounded-md bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
-                data-aos="fade-up"
-                data-aos-duration="1500"
-              >
-                Book Now
-              </button>
+              <Link to="/Form">
+                <button
+                  className="rounded-md bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
+                  data-aos="fade-up"
+                  data-aos-duration="1500"
+                >
+                  Book Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
 
+        <Count />
         <CarList />
         <Services />
         <div className="container bg-white rounded-md  ">

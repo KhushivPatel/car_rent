@@ -4,6 +4,7 @@ import logo from "../images/logo.png";
 import logo2 from "../images/logo_2.png";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Form from "../Component/Form"
 
 // Menu links data
 const MenuLinks = [
@@ -81,9 +82,11 @@ const Navbar = ({ theme, setTheme }) => {
             </div>
 
             {/* Booking button */}
-            <li className="flex ml-16 px-3 font-semibold text-orange-50 hover:text-primary dark:text-white dark:hover:text-primary duration-200 h-fit bg-primary hover:bg-black rounded-full py-2 dark:bg-primary dark:hover:bg-white shadow-lg shadow-gray-400 dark:shadow-lg dark:shadow-zinc-700">
-              <span>Booking</span>
-            </li>
+            <Link to="/Form">
+              <li className="flex ml-16 px-3 font-semibold text-orange-50 hover:text-primary dark:text-white dark:hover:text-primary duration-200 h-fit bg-primary hover:bg-black rounded-full py-2 dark:bg-primary dark:hover:bg-white shadow-lg shadow-gray-400 dark:shadow-lg dark:shadow-zinc-700">
+                <span>Booking</span>
+              </li>
+            </Link>
           </div>
           {/* Dark mode toggle */}
           <div>

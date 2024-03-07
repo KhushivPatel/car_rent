@@ -10,24 +10,21 @@ const Member = () => {
     {
       name: "Rahual Anand",
       Image: k,
-      description:
-        "With safety as our utmost priority, we ensure our drivers are qualified and trained professionals who always abide by traffic rules and regulations.",
+      description: "This is a good company.",
       aosDelay: "0",
       Number: "+91 123456789",
     },
     {
       name: "Piyush Agarwal",
       Image: v,
-      description:
-        "We securely process all of your credit card information through our payment gateway. We do not store or retain any credit card .",
+      description: "Good car, Good driver.",
       aosDelay: "500",
       Number: "+91 123456789",
     },
     {
       name: "Raj Kumar",
       Image: y,
-      description:
-        "You can rest assured knowing that our taxi service is reliable because we are available 24/7, 365 days a year at reasonable rates for everyone.",
+      description: "Awesome service.",
       aosDelay: "1000",
       Number: "+91 123456789",
     },
@@ -46,7 +43,7 @@ const Member = () => {
                 key={service.id}
                 data-aos="fade-up"
                 data-aos-delay={service.aosDelay}
-                className="rounded-2xl bg-white dark:bg-semi  cursor-pointer  hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
+                className="rounded-2xl bg-white dark:bg-semi  w-96 cursor-pointer  hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
               >
                 <div className="h-[100px]">
                   <img

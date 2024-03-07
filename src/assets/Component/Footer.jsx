@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import logo2 from "../images/logo_2.png";
+import { FaWhatsapp } from "react-icons/fa";
 
 const FooterLinks = [
   {
@@ -64,11 +65,11 @@ const Footer = ({ theme, setTheme }) => {
               Drive Your Dreams: Where Every Journey Begins
             </p>
             <a
-              href="https://www.youtube.com/"
+              href="tel:+916261215099"
               target="_blank"
               className="inline-block bg-primary text-white py-2 px-4 mt-4 text-sm rounded-full"
             >
-              click here
+              click here to call
             </a>
           </div>
 
@@ -122,19 +123,16 @@ const Footer = ({ theme, setTheme }) => {
                 </div>
                 <div className="flex items-center gap-3 mt-6">
                   <FaMobileAlt className="dark:text-primary" />
-                  <p className="dark:text-white">+91 1234567890</p>
+                  <p className="dark:text-white">+91 6261215099</p>
                 </div>
 
                 {/* social links */}
                 <div className="flex items-center gap-3 mt-6">
-                  <a href="#">
-                    <FaInstagram className="text-3xl hover:text-primary duration-300 dark:text-white dark:hover:text-primary" />
-                  </a>
-                  <a href="#">
-                    <FaFacebook className="text-3xl hover:text-primary duration-200 dark:text-white dark:hover:text-primary" />
-                  </a>
-                  <a href="#">
-                    <FaLinkedin className="text-3xl hover:text-primary duration-200 dark:text-white dark:hover:text-primary" />
+                  <a href="https://api.whatsapp.com/send/?phone=%2B916261215099&text&type=phone_number&app_absent=0">
+                    <FaWhatsapp
+                      className="text-3xl hover:text-primary
+                    duration-200 dark:text-white dark:hover:text-primary"
+                    />
                   </a>
                 </div>
               </div>
