@@ -94,19 +94,19 @@ const Form = () => {
     e.preventDefault();
     if (dropoffDate > pickupDate) {
       // Process form submission
-      toast.success("Form submitted successfully!")
-       setPickupDate(null);
-       setDropoffDate(null);
-       setSelectedPickupPlace("");
-       setSelectedDropoffPlace("");
-       setSelectedPackage("");
-       setSelectedCar("");
+      toast.success("Form submitted successfully!");
+      setPickupDate(null);
+      setDropoffDate(null);
+      setSelectedPickupPlace("");
+      setSelectedDropoffPlace("");
+      setSelectedPackage("");
+      setSelectedCar("");
     } else {
       alert("Drop-off date must be greater than pick-up date");
     }
   };
   // firebase
-  const value = collection(db, "demo");
+  const value = collection(db, "Booking");
 
   const handleCreate = async () => {
     try {

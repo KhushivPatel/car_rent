@@ -68,7 +68,7 @@ const MyAccount = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const value = collection(db, "demo");
+        const value = collection(db, "Booking");
         const querySnapshot = await getDocs(value);
         const data = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -84,7 +84,7 @@ const MyAccount = () => {
 
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, "demo", id)); // Fix the reference by providing the document ID
+      await deleteDoc(doc(db, "Booking", id)); // Fix the reference by providing the document ID
       setBookings(bookings.filter((booking) => booking.id !== id));
     } catch (error) {
       console.error("Error deleting document: ", error);
@@ -219,7 +219,9 @@ const MyAccount = () => {
                 </div>
               ))
             ) : (
-              <p>No bookings found</p>
+              <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-md p-6 mb-4 text-center ">
+                <p className="text-xl text-red-500">No bookings found😕</p>
+              </div>
             )}
           </div>
         </div>
