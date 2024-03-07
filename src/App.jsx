@@ -16,6 +16,8 @@ import MyAccount from "./Pages/Home/MyAccount";
 import Contactus from "./Pages/Home/Contactus";
 import Member from "./Pages/Home/Member";
 import Slider from "./assets/Component/Slider";
+import Aboutus from "./Pages/Home/Aboutus";
+import Form from "./assets/Component/Form";
 
 const App = () => {
   // dark mode start
@@ -59,6 +61,8 @@ const App = () => {
           <Route path="/MyAccount" element={<MyAccount theme={theme} />} />
           <Route path="/Member" element={<Member theme={theme} />} />
           <Route path="/Slider" element={<Slider theme={theme} />} />
+          <Route path="/Aboutus" element={<Aboutus theme={theme} />} />
+          <Route path="/Form" element={<Form theme={theme} />} />
         </Routes>
         <Footer theme={theme} setTheme={setTheme} />
       </Router>

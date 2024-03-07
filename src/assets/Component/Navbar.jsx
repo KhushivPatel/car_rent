@@ -10,9 +10,9 @@ const MenuLinks = [
   { id: 1, name: "Home", link: "/Home" },
   { id: 2, name: "Services", link: "/" },
   { id: 3, name: "Packages", link: "/" },
-  { id: 4, name: "About us", link: "/" },
+  { id: 4, name: "About us", link: "/Aboutus" },
   { id: 5, name: "Contact us", link: "/Contactus" },
-  { id: 6, name: "Bloges", link: "/" },
+  { id: 6, name: "Bloges", link: "/Blog" },
 ];
 
 const Navbar = ({ theme, setTheme }) => {
