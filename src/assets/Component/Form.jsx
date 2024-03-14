@@ -9,8 +9,18 @@ import { db } from "../../Firebase";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import car1 from "../../assets/images/f1.png";
+import car2 from "../../assets/images/f2.png";
+import car3 from "../../assets/images/f3.png";
+import car4 from "../../assets/images/f4.png";
+import car5 from "../../assets/images/f5.png";
+import car6 from "../../assets/images/f6.png";
+import car7 from "../../assets/images/f7.png";
+import car8 from "../../assets/images/f8.png";
+import car9 from "../../assets/images/f9.png";
 
 const Form = () => {
+  // const [image, setImage] = useState(null);
   const [pickupDate, setPickupDate] = useState(null);
   const [dropoffDate, setDropoffDate] = useState(null);
   const [selectedPickupPlace, setSelectedPickupPlace] = useState("");
@@ -20,15 +30,58 @@ const Form = () => {
   const [val, setVal] = useState([]);
 
   const cars = [
-    "Tempo Traveler (17 seats)",
-    "Tempo Traveler(13 seats)",
-    "Etios",
-    "Ertiga",
-    "Aura",
-    "Innova",
-    "Swift Dzire",
-    "Innova Crysta",
-    "Hundai Xcent",
+    {
+      name: "Tempo Traveler (17 seats)",
+      price: "1,000",
+      image: car1,
+    },
+    {
+      name: "Tempo Traveler(13 seats)",
+      price: "1,000",
+      image: car2,
+    },
+
+    {
+      name: "Etios",
+      price: "1,000",
+      image: car3,
+    },
+
+    {
+      name: "Ertiga",
+      price: "1,000",
+      image: car4,
+    },
+
+    {
+      name: "Aura",
+      price: "1,000",
+      image: car5,
+    },
+
+    {
+      name: "Innova",
+      price: "1,000",
+      image: car6,
+    },
+
+    {
+      name: "Swift Dzire",
+      price: "1,000",
+      image: car7,
+    },
+
+    {
+      name: "Innova Crysta",
+      price: "1,000",
+      image: car8,
+    },
+
+    {
+      name: "Hundai Xcent",
+      price: "1,000",
+      image: car9,
+    },
   ];
   const pickupPlaces = [
     "Other",
@@ -110,6 +163,7 @@ const Form = () => {
 
   const handleCreate = async () => {
     try {
+      const selectedCarInfo = cars.find((car) => car.name === selectedCar);
       await addDoc(value, {
         pickupdate: pickupDate,
         dropoffdate: dropoffDate,
@@ -117,6 +171,8 @@ const Form = () => {
         selectedDropoffPlace: selectedDropoffPlace,
         selectedPackage: selectedPackage,
         selectedCar: selectedCar,
+        carImage: selectedCarInfo.image,
+        carPrice: selectedCarInfo.price,
       });
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -132,6 +188,7 @@ const Form = () => {
     getData();
   }, []);
 
+  //
   return (
     <>
       <div className="pb-4 dark:bg-semi justify-center items-center flex">
@@ -143,7 +200,7 @@ const Form = () => {
             <div className="mb-4 ">
               <label
                 htmlFor="car"
-                className="block font-medium mb-1 justify-center "
+                className="block font-medium mb-1 justify-center  "
               >
                 <FaCar
                   className="absolute mt-[3px]  ml-[-20px] text-3xl text-semi
@@ -158,12 +215,20 @@ const Form = () => {
               >
                 <option value="">Select a car</option>
                 {cars.map((car, index) => (
-                  <option key={index} value={car}>
-                    {car}
+                  <option key={index} value={car.name}>
+                    {car.name}
                   </option>
                 ))}
               </select>
             </div>
+            {/* {selectedCar && (
+              <div>
+                <img
+                  src={cars.find((car) => car.name === selectedCar)?.image}
+                  alt={selectedCar}
+                />
+              </div>
+            )} */}
             <div className="mb-4">
               <label
                 htmlFor="car"
@@ -290,6 +355,7 @@ const Form = () => {
             </button>
           </form>
         </div>
+
         {/* {val.map((values) => (
           <div key={values.id}>
             <h1>

@@ -11,7 +11,6 @@ import "aos/dist/aos.css";
 import Sign_up from "./Pages/Sign_in_up/Sign_up";
 import Sign_in from "./Pages/Sign_in_up/Sign_in";
 import Fpass from "./Pages/Sign_in_up/Fpass";
-import Just from "./Pages/Sign_in_up/Just";
 import MyAccount from "./Pages/Home/MyAccount";
 import Contactus from "./Pages/Home/Contactus";
 import Member from "./Pages/Home/Member";
@@ -19,6 +18,9 @@ import Slider from "./assets/Component/Slider";
 import Aboutus from "./Pages/Home/Aboutus";
 import Form from "./assets/Component/Form";
 import Count from "./assets/Component/Count";
+import CarList from "./Pages/Home/CarList";
+import Detail from "./Pages/Home/Detail";
+import Payment from "./assets/Component/Payment";
 
 const App = () => {
   // dark mode start
@@ -65,6 +67,9 @@ const App = () => {
           <Route path="/Aboutus" element={<Aboutus theme={theme} />} />
           <Route path="/Form" element={<Form theme={theme} />} />
           <Route path="/Count" element={<Count theme={theme} />} />
+          <Route exact path="/" component={CarList} />
+          <Route path="/car/:carName" element={<Detail />} />
+          <Route path="/Payment" element={<Payment />} />
         </Routes>
         <Footer theme={theme} setTheme={setTheme} />
       </Router>

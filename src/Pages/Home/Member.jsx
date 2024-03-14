@@ -38,9 +38,9 @@ const Member = () => {
             <h1 className="text-3xl font-bold"> Hear From Our Guests</h1>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 md:gap-5 place-items-center">
-            {ServicesData.map((service) => (
+            {ServicesData.map((service, index) => (
               <div
-                key={service.id}
+                key={index} // Use the index as the key
                 data-aos="fade-up"
                 data-aos-delay={service.aosDelay}
                 className="rounded-2xl bg-white dark:bg-semi  w-96 cursor-pointer  hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"

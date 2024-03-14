@@ -9,6 +9,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { MdDelete } from "react-icons/md";
 
 const MyAccount = () => {
+  const [subtotal, setSubtotal] = useState(0); // Initialize subtotal state
   const [changeDetail, setChangeDetail] = useState(false);
   const auth = getAuth();
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const MyAccount = () => {
     name: "",
     email: "",
   });
+
+  //
 
   useEffect(() => {
     if (auth.currentUser) {
@@ -90,6 +93,20 @@ const MyAccount = () => {
       console.error("Error deleting document: ", error);
     }
   };
+
+  // const subtotal = bookings.reduce(
+  //   (acc, booking) => acc + parseInt(booking.carPrice.replace(/,/g, "")),
+  //   0
+  // );
+  useEffect(() => {
+    // Calculate subtotal
+    const subtotalValue = bookings.reduce(
+      (acc, booking) => acc + parseInt(booking.carPrice.replace(/,/g, "")),
+      0
+    );
+    setSubtotal(subtotalValue); // Update subtotal state
+  }, [bookings]);
+
   return (
     <>
       <div className=" dark:bg-semi pt-12 pb-12">
@@ -171,7 +188,7 @@ const MyAccount = () => {
           </div>
         </section>
         {/*  */}
-        <div className="container mx-auto px-4 py-8 ">
+        {/* <div className="container mx-auto px-4 py-8 ">
           <h1 className="text-3xl font-bold  text-center dark:text-primary mb-7">
             My bookings
           </h1>
@@ -179,10 +196,16 @@ const MyAccount = () => {
             {bookings.length > 0 ? (
               bookings.map((booking) => (
                 <div
-                  className="bg-white rounded-lg shadow-md p-6 mb-4 "
+                  className="bg-white rounded-lg shadow-md p-6 mb-4"
                   key={booking.id}
                 >
-                  <p className=" mb-2 text-xl font-semibold">
+                  <img
+                    src={booking.carImage}
+                    alt={booking.selectedCar}
+                    className=" w-[200px] h-[120px] border object-cover mr-4"
+                  />
+
+                  <p className="mb-2 text-xl font-semibold">
                     <span className="font-semibold">Car:</span>{" "}
                     {booking.selectedCar}
                   </p>
@@ -198,18 +221,24 @@ const MyAccount = () => {
                     <span className="font-semibold">Package:</span>{" "}
                     {booking.selectedPackage}
                   </p>
-                  <p className="text-md font-semibold mb-2">
-                    Pickup Date:{" "}
-                    {new Date(
-                      booking.pickupdate.seconds * 1000
-                    ).toLocaleString()}
-                  </p>
-                  <p className="text-md font-medium mb-2">
-                    Drop-off Date:{" "}
-                    {new Date(
-                      booking.dropoffdate.seconds * 1000
-                    ).toLocaleString()}
-                  </p>
+                  {booking.pickupdate && (
+                    <p className="text-md font-semibold mb-2">
+                      Pickup Date:{" "}
+                      {new Date(
+                        booking.pickupdate.seconds * 1000
+                      ).toLocaleString()}
+                    </p>
+                  )}
+                  {booking.dropoffdate && (
+                    <p className="text-md font-medium mb-2">
+                      Drop-off Date:{" "}
+                      {new Date(
+                        booking.dropoffdate.seconds * 1000
+                      ).toLocaleString()}
+                    </p>
+                  )}
+
+                  <p className="ml-auto text-gray-500">{booking.carPrice}</p>
                   <button
                     className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
                     onClick={() => handleDelete(booking.id)}
@@ -224,7 +253,128 @@ const MyAccount = () => {
               </div>
             )}
           </div>
+        </div> */}
+
+        <div className="container mx-auto px-4 py-8 ">
+          <h1 className="text-3xl font-bold text-center dark:text-primary mb-7">
+            My bookings
+          </h1>
+          <div className="justify-center  ">
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <div
+                  className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between"
+                  key={booking.id}
+                >
+                  <div className="flex items-center">
+                    <img
+                      src={booking.carImage}
+                      alt={booking.selectedCar}
+                      className="w-[200px] h-[120px] border object-cover mr-4"
+                    />
+
+                    <div>
+                      <p className="mb-2 text-xl font-semibold">
+                        <span className="font-semibold text-gray-500">
+                          Car:
+                        </span>{" "}
+                        {booking.selectedCar}
+                      </p>
+                      <p className="mb-2 font-semibold">
+                        <span className="font-semibold text-gray-500">
+                          Pickup Place:
+                        </span>{" "}
+                        {booking.selectedPickupPlace}
+                      </p>
+                      <p className="mb-2 font-semibold">
+                        <span className="font-semibold text-gray-500">
+                          Drop-off Place:
+                        </span>{" "}
+                        {booking.selectedDropoffPlace}
+                      </p>
+                      <p className="mb-2 font-semibold">
+                        <span className="font-semibold text-gray-500">
+                          Package:
+                        </span>{" "}
+                        {booking.selectedPackage}
+                      </p>
+                      {booking.pickupdate && (
+                        <p className="text-md font-semibold mb-2">
+                          <span className="font-semibold text-gray-500">
+                            Pickup Date:{" "}
+                          </span>
+                          {new Date(
+                            booking.pickupdate.seconds * 1000
+                          ).toLocaleString()}
+                        </p>
+                      )}
+                      {booking.dropoffdate && (
+                        <p className="text-md font-medium mb-2">
+                          <span className="font-semibold text-gray-500">
+                            Drop-off Date:{" "}
+                          </span>
+                          {new Date(
+                            booking.dropoffdate.seconds * 1000
+                          ).toLocaleString()}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <p className="text-black  text-2xl font-semibold">Price=</p>
+                    <p className="text-black  text-2xl font-semibold">
+                      {booking.carPrice}
+                    </p>
+                    {/* You can calculate subtotal here */}
+                  </div>
+                  <button
+                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+                    onClick={() => handleDelete(booking.id)}
+                  >
+                    <MdDelete className="text-2xl" />
+                  </button>
+                </div>
+              ))
+            ) : (
+              <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-md p-6 mb-4 text-center ">
+                <p className="text-xl text-red-500">No bookings found😕</p>
+              </div>
+            )}
+            {bookings.length > 0 && (
+              <div className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
+                <div>
+                  <p className="text-xl font-semibold">Subtotal</p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">₹ {subtotal}</p>
+                </div>
+              </div>
+            )}
+
+            {/* {bookings.length > 0 && (
+              <Link
+                to={{ pathname: "/Payment", state: { subtotal: subtotal } }}
+              >
+                <button className="bg-primary hover:bg-yellow-500 w-full text-gray-900 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                  PROCEED TO CHECKOUT
+                </button>
+              </Link>
+            )} */}
+
+            <Link
+              to={{
+                pathname: "/Payment",
+                state: { subtotal: subtotal, bookings: bookings },
+              }}
+            >
+              <button className="bg-primary hover:bg-yellow-500 w-full text-gray-900 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                PROCEED TO CHECKOUT
+              </button>
+            </Link>
+          </div>
         </div>
+
+        {/*  */}
       </div>
     </>
   );

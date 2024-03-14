@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link from React Router
-
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import whiteCar from "../../assets/images/car_light.png";
 import car2 from "../../assets/images/car_light.png";
 import car3 from "../../assets/images/car_light.png";
@@ -9,83 +9,91 @@ import { IoIosMan } from "react-icons/io";
 import { LuParkingCircle } from "react-icons/lu";
 import { FaRoad } from "react-icons/fa";
 
-import { FaCarSide } from "react-icons/fa";
-<FaCarSide />;
+const CarList = ({ car }) => {
+  useEffect(() => {
+    const storeCarData = async () => {
+      try {
+        const db = getFirestore();
+        const carsCollection = collection(db, "cars");
+        await Promise.all(carList.map((car) => addDoc(carsCollection, car)));
+        console.log("Car data stored successfully");
+      } catch (error) {
+        console.error("Error storing car data:", error);
+      }
+    };
 
-const carList = [
-  {
-    name: "BMW UX",
-    price: 250,
-    person: 4,
-    parking: "Extra Charge",
-    km: 17,
-    image: whiteCar,
-    aosDelay: 0,
-  },
-  {
-    name: "KIA UX",
-    price: 140,
-    person: 6,
-    parking: "Extra Charge",
-    km: 17,
-    image: car2,
-    aosDelay: 500,
-  },
-  {
-    name: "BMW UX",
-    price: 100,
-    person: 7,
-    parking: "Extra Charge",
-    km: 17,
-    image: car3,
-    aosDelay: 1000,
-  },
-  // Add three more cars
-  {
-    name: "Toyota UX",
-    price: 120,
-    person: 2,
-    parking: "Extra Charge",
-    km: 17,
-    image: whiteCar,
-    aosDelay: 0,
-  },
-  {
-    name: "Honda UX",
-    price: 110,
-    person: 4,
-    parking: "Extra Charge",
-    km: 17,
-    image: car2,
-    aosDelay: 500,
-  },
-  {
-    name: "Tesla UX",
-    price: 180,
-    person: 7,
-    parking: "Extra Charge",
-    km: 17,
-    image: car3,
-    aosDelay: 1000,
-  },
-];
+    storeCarData();
+  }, []);
 
-const CarList = () => {
+  const carList = [
+    {
+      name: "BMW UX",
+      price: 250,
+      person: 4,
+      parking: "Extra Charge",
+      km: 17,
+      image: whiteCar,
+      aosDelay: 0,
+    },
+    {
+      name: "KIA UX",
+      price: 140,
+      person: 6,
+      parking: "Extra Charge",
+      km: 17,
+      image: car2,
+      aosDelay: 500,
+    },
+    {
+      name: "BMW UX",
+      price: 100,
+      person: 7,
+      parking: "Extra Charge",
+      km: 17,
+      image: car3,
+      aosDelay: 1000,
+    },
+    // Add three more cars
+    {
+      name: "Toyota UX",
+      price: 120,
+      person: 2,
+      parking: "Extra Charge",
+      km: 17,
+      image: whiteCar,
+      aosDelay: 0,
+    },
+    {
+      name: "Honda UX",
+      price: 110,
+      person: 4,
+      parking: "Extra Charge",
+      km: 17,
+      image: car2,
+      aosDelay: 500,
+    },
+    {
+      name: "Tesla UX",
+      price: 180,
+      person: 7,
+      parking: "Extra Charge",
+      km: 17,
+      image: car3,
+      aosDelay: 1000,
+    },
+  ];
+
   return (
     <div className="">
-      <div className="container">
+      <div className="container mt-8">
         {/* Section Heading */}
         <h1
           data-aos="fade-up"
           className="text-3xl sm:text-4xl font-semibold font-serif mb-3"
         >
-          Lorem ipsum dolor
+          Our cars
         </h1>
-        {/* Section Subheading */}
-        <p data-aos="fade-up" data-aos-delay="400" className="text-sm pb-10">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor iure
-          nemo ab?
-        </p>
+
         {/* Car listing */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
           {carList.map((car, index) => (
@@ -132,12 +140,14 @@ const CarList = () => {
                 </div>
               </div>
               {/* Add Link to Details page */}
-              <Link
-                to={`/car/${car.name}`}
-                className="justify-center flex text-xl text-primary text-center"
-              >
-                Details
-              </Link>
+              <div>
+                <Link
+                  to={{ pathname: `/car/${car.name}`, state: { car: car } }}
+                  className="justify-center flex text-xl text-primary text-center"
+                >
+                  View Details
+                </Link>
+              </div>
               {/* Car Distance */}
               <p className="text-xl font-semibold absolute top-0 left-3 ">
                 12Km/Day
