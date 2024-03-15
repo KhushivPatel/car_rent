@@ -85,6 +85,8 @@ const MyAccount = () => {
     fetchData();
   }, []);
 
+  // kam nu
+
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, "Booking", id)); // Fix the reference by providing the document ID
@@ -93,17 +95,21 @@ const MyAccount = () => {
       console.error("Error deleting document: ", error);
     }
   };
-
+  // kam nu
   // const subtotal = bookings.reduce(
   //   (acc, booking) => acc + parseInt(booking.carPrice.replace(/,/g, "")),
   //   0
   // );
   useEffect(() => {
     // Calculate subtotal
-    const subtotalValue = bookings.reduce(
-      (acc, booking) => acc + parseInt(booking.carPrice.replace(/,/g, "")),
-      0
-    );
+    const subtotalValue = bookings.reduce((acc, booking) => {
+      // Check if booking.carPrice exists and is not null or undefined
+      const carPrice = booking.carPrice
+        ? booking.carPrice.replace(/,/g, "")
+        : 0;
+      return acc + parseInt(carPrice);
+    }, 0);
+
     setSubtotal(subtotalValue); // Update subtotal state
   }, [bookings]);
 
@@ -259,11 +265,11 @@ const MyAccount = () => {
           <h1 className="text-3xl font-bold text-center dark:text-primary mb-7">
             My bookings
           </h1>
-          <div className="justify-center  ">
+          <div className="justify-center   ">
             {bookings.length > 0 ? (
               bookings.map((booking) => (
                 <div
-                  className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between"
+                  className="bg-white  dark:bg-slate-500 rounded-lg shadow-md p-6 mb-4 flex items-center justify-between"
                   key={booking.id}
                 >
                   <div className="flex items-center">
@@ -274,33 +280,33 @@ const MyAccount = () => {
                     />
 
                     <div>
-                      <p className="mb-2 text-xl font-semibold">
-                        <span className="font-semibold text-gray-500">
+                      <p className="mb-2 text-xl font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
                           Car:
                         </span>{" "}
                         {booking.selectedCar}
                       </p>
-                      <p className="mb-2 font-semibold">
-                        <span className="font-semibold text-gray-500">
+                      <p className="mb-2 font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
                           Pickup Place:
                         </span>{" "}
                         {booking.selectedPickupPlace}
                       </p>
-                      <p className="mb-2 font-semibold">
-                        <span className="font-semibold text-gray-500">
+                      <p className="mb-2 font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
                           Drop-off Place:
                         </span>{" "}
                         {booking.selectedDropoffPlace}
                       </p>
-                      <p className="mb-2 font-semibold">
-                        <span className="font-semibold text-gray-500">
+                      <p className="mb-2 font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
                           Package:
                         </span>{" "}
                         {booking.selectedPackage}
                       </p>
                       {booking.pickupdate && (
-                        <p className="text-md font-semibold mb-2">
-                          <span className="font-semibold text-gray-500">
+                        <p className="text-md font-semibold mb-2 dark:text-white">
+                          <span className="font-semibold text-gray-500 dark:text-black">
                             Pickup Date:{" "}
                           </span>
                           {new Date(
@@ -309,8 +315,8 @@ const MyAccount = () => {
                         </p>
                       )}
                       {booking.dropoffdate && (
-                        <p className="text-md font-medium mb-2">
-                          <span className="font-semibold text-gray-500">
+                        <p className="text-md font-medium mb-2 dark:text-white">
+                          <span className="font-semibold text-gray-500 dark:text-black">
                             Drop-off Date:{" "}
                           </span>
                           {new Date(
@@ -336,42 +342,37 @@ const MyAccount = () => {
                 </div>
               ))
             ) : (
-              <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-md p-6 mb-4 text-center ">
+              <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-md p-6 mb-4 text-center dark:bg-gray-300 ">
                 <p className="text-xl text-red-500">No bookings found😕</p>
               </div>
             )}
             {bookings.length > 0 && (
-              <div className="bg-white rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
+              <div className="bg-white  dark:bg-slate-400 rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
                 <div>
-                  <p className="text-xl font-semibold">Subtotal</p>
+                  <p className="text-xl font-semibold dark:text-white">
+                    Subtotal
+                  </p>
                 </div>
                 <div>
-                  <p className="text-xl font-semibold">₹ {subtotal}</p>
+                  <p className="text-xl font-semibold  dark:text-white">
+                    ₹ {subtotal}
+                  </p>
                 </div>
               </div>
             )}
-
-            {/* {bookings.length > 0 && (
-              <Link
-                to={{ pathname: "/Payment", state: { subtotal: subtotal } }}
-              >
-                <button className="bg-primary hover:bg-yellow-500 w-full text-gray-900 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                  PROCEED TO CHECKOUT
-                </button>
-              </Link>
-            )} */}
-
-            <Link
-              to={{
-                pathname: "/Payment",
-                state: { subtotal: subtotal, bookings: bookings },
-              }}
-            >
-              <button className="bg-primary hover:bg-yellow-500 w-full text-gray-900 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                PROCEED TO CHECKOUT
-              </button>
-            </Link>
           </div>
+        </div>
+        <div className="flex justify-center">
+          <Link
+            to={{
+              pathname: "/Payment",
+              state: { subtotal: subtotal, bookings: bookings },
+            }}
+          >
+            <button className="bg-primary hover:bg-yellow-500 justify-center flex items-center text-center text-gray-900 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              PROCEED TO CHECKOUT
+            </button>
+          </Link>
         </div>
 
         {/*  */}

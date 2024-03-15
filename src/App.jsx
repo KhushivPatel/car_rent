@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route} from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,8 +20,9 @@ import Aboutus from "./Pages/Home/Aboutus";
 import Form from "./assets/Component/Form";
 import Count from "./assets/Component/Count";
 import CarList from "./Pages/Home/CarList";
-import Detail from "./Pages/Home/Detail";
 import Payment from "./assets/Component/Payment";
+
+import CarD from "./assets/Component/CarD";
 
 const App = () => {
   // dark mode start
@@ -67,8 +69,10 @@ const App = () => {
           <Route path="/Aboutus" element={<Aboutus theme={theme} />} />
           <Route path="/Form" element={<Form theme={theme} />} />
           <Route path="/Count" element={<Count theme={theme} />} />
+
           <Route exact path="/" component={CarList} />
-          <Route path="/car/:carName" element={<Detail />} />
+          <Route path="/car/:name" component={CarD} />
+
           <Route path="/Payment" element={<Payment />} />
         </Routes>
         <Footer theme={theme} setTheme={setTheme} />
