@@ -1,148 +1,4 @@
-// import React, { useEffect, useState } from "react";
-// import { Link, useLocation, useNavigate } from "react-router-dom";
-// import logo from "../images/logo.png";
-// import logo2 from "../images/logo_2.png";
-// import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import Form from "../Component/Form";
 
-// // Menu links data
-// const MenuLinks = [
-//   { id: 1, name: "Home", link: "/Home" },
-//   { id: 2, name: "Services", link: "/" },
-//   { id: 3, name: "Packages", link: "/" },
-//   { id: 4, name: "About us", link: "/Aboutus" },
-//   { id: 5, name: "Contact us", link: "/Contactus" },
-//   { id: 6, name: "Bloges", link: "/Blog" },
-// ];
-
-// const Navbar = ({ theme, setTheme }) => {
-//   // Handler for toggling theme
-//   const toggleTheme = () => {
-//     setTheme(theme === "dark" ? "light" : "dark");
-//   };
-//   const [pageState, setPageState] = useState("Sign_in");
-//   const [isMenuOpen, setIsMenuOpen] = useState(false); // Define isMenuOpen state
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   const auth = getAuth();
-
-//   useEffect(() => {
-//     onAuthStateChanged(auth, (user) => {
-//       if (user) {
-//         setPageState("MyAccount");
-//       } else {
-//         setPageState("Sign_in");
-//       }
-//     });
-//   }, [auth]);
-
-//   return (
-//     <div className="bg-white dark:bg-semi dark:text-white duration-200 relative z-40">
-//       <div className="py-2">
-//         <div className="container flex justify-between items-center">
-//           {/* Logo and link section */}
-//           <div className="flex items-center gap-3">
-//             <Link
-//               to="/Home"
-//               className="text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl "
-//             >
-//               {/* Conditional rendering of logo based on theme */}
-//               <img
-//                 src={theme === "dark" ? logo2 : logo}
-//                 className="cursor-pointer h-14"
-//               />
-//             </Link>
-//             {/* Menu Items */}
-//             <div className="lg:hidden">
-//               {/* Hamburger menu icon */}
-//               <button
-//                 className="text-black hover:text-primary dark:text-white dark:hover:text-primary"
-//                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-//               >
-//                 <svg
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   className="h-6 w-6"
-//                   fill="none"
-//                   viewBox="0 0 24 24"
-//                   stroke="currentColor"
-//                 >
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth={2}
-//                     d="M4 6h16M4 12h16m-7 6h7"
-//                   />
-//                 </svg>
-//               </button>
-//               {/* Responsive menu */}
-//               {isMenuOpen && (
-//                 <ul className="absolute top-full left-0 w-full bg-white dark:bg-semi dark:text-white py-2 px-4 shadow-lg">
-//                   {MenuLinks.map((link) => (
-//                     <li key={link.id}>
-//                       <Link
-//                         to={link.link}
-//                         className="block py-2 font-semibold text-semi hover:text-primary "
-//                       >
-//                         {link.name}
-//                       </Link>
-//                     </li>
-//                   ))}
-//                 </ul>
-//               )}
-//             </div>
-//             {/* Full-size menu */}
-//             <div className="hidden lg:block">
-//               <ul className="flex items-center gap-4">
-//                 {MenuLinks.map((link) => (
-//                   <li key={link.id}>
-//                     <Link
-//                       to={link.link}
-//                       className="inline-block px-4 font-semibold text-semi hover:text-primary dark:text-white dark:hover:text-primary duration-200"
-//                     >
-//                       {link.name}
-//                     </Link>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-//             {/* Responsive mode and booking button */}
-//             <div className="flex items-center">
-//               <div
-//                 className={`inline-block px-4 font-semibold cursor-pointer text-black hover:text-primary dark:text-white dark:hover:text-primary duration-200 ${
-//                   location.pathname === "/Sign_in" ||
-//                   (location.pathname === "/MyAccount" &&
-//                     "text-semi underline  border-b-solid border-b-white")
-//                 }`}
-//                 onClick={() =>
-//                   navigate(pageState === "Sign_in" ? "/Sign_in" : "/MyAccount")
-//                 }
-//               >
-//                 {pageState === "Sign_in" ? "Sign In" : "MyAccount"}
-//               </div>
-//               {/* Booking button */}
-//               <Link to="/Form">
-//                 <li className="flex ml-4 px-3 font-semibold text-orange-50 hover:text-primary dark:text-white dark:hover:text-primary duration-200 h-fit bg-primary hover:bg-black rounded-full py-2 dark:bg-primary dark:hover:bg-white shadow-lg shadow-gray-400 dark:shadow-lg dark:shadow-zinc-700">
-//                   <span>Booking</span>
-//                 </li>
-//               </Link>
-//             </div>
-//           </div>
-//           {/* Dark mode toggle */}
-//           <div className="cursor-pointer">
-//             {theme === "dark" ? (
-//               <BiSolidSun onClick={toggleTheme} className="text-2xl" />
-//             ) : (
-//               <BiSolidMoon onClick={toggleTheme} className="text-2xl" />
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
 
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -155,31 +11,27 @@ import Form from "../Component/Form";
 // Menu links data
 const MenuLinks = [
   { id: 1, name: "Home", link: "/Home" },
-  { id: 2, name: "Services", link: "/1" },
-  { id: 3, name: "Packages", link: "/2" },
+  { id: 2, name: "Services", link: "/Ser" },
+  { id: 3, name: "Packages", link: "/Packages" },
   { id: 4, name: "About us", link: "/Aboutus" },
   { id: 5, name: "Contact us", link: "/Contactus" },
-  { id: 6, name: "Bloges", link: "/Blog" },
+  { id: 6, name: "Blogs", link: "/Blogs" },
 ];
 
 const Navbar = ({ theme, setTheme }) => {
-  // Handler for toggling theme
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
   const [pageState, setPageState] = useState("Sign_in");
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Define isMenuOpen state
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const auth = getAuth();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setPageState("MyAccount");
-      } else {
-        setPageState("Sign_in");
-      }
+      setPageState(user ? "MyAccount" : "Sign_in");
     });
   }, [auth]);
 
@@ -187,7 +39,6 @@ const Navbar = ({ theme, setTheme }) => {
     <div className="bg-white dark:bg-semi dark:text-white duration-200 relative z-40">
       <div className="py-2">
         <div className="container flex justify-between items-center">
-          {/* Logo and link section */}
           <div className="flex items-center gap-3">
             <Link
               to="/Home"
@@ -195,15 +46,13 @@ const Navbar = ({ theme, setTheme }) => {
                 location.pathname === "/Home" && "underline"
               }`}
             >
-              {/* Conditional rendering of logo based on theme */}
               <img
                 src={theme === "dark" ? logo2 : logo}
                 className="cursor-pointer h-14"
+                alt="Logo"
               />
             </Link>
-            {/* Menu Items */}
             <div className="lg:hidden">
-              {/* Hamburger menu icon */}
               <button
                 className="text-black hover:text-primary dark:text-white dark:hover:text-primary"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -223,7 +72,6 @@ const Navbar = ({ theme, setTheme }) => {
                   />
                 </svg>
               </button>
-              {/* Responsive menu */}
               {isMenuOpen && (
                 <ul className="absolute top-full left-0 w-full bg-white dark:bg-semi dark:text-white py-2 px-4 shadow-lg">
                   {MenuLinks.map((link) => (
@@ -233,6 +81,7 @@ const Navbar = ({ theme, setTheme }) => {
                         className={`block py-2 font-semibold text-semi hover:text-primary ${
                           location.pathname === link.link && "underline"
                         }`}
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         {link.name}
                       </Link>
@@ -241,7 +90,6 @@ const Navbar = ({ theme, setTheme }) => {
                 </ul>
               )}
             </div>
-            {/* Full-size menu */}
             <div className="hidden lg:block">
               <ul className="flex items-center gap-4">
                 {MenuLinks.map((link) => (
@@ -258,7 +106,6 @@ const Navbar = ({ theme, setTheme }) => {
                 ))}
               </ul>
             </div>
-            {/* Responsive mode and booking button */}
             <div className="flex items-center">
               <div
                 className={`inline-block px-4 font-semibold cursor-pointer text-black hover:text-primary dark:text-white dark:hover:text-primary duration-200 ${
@@ -272,7 +119,6 @@ const Navbar = ({ theme, setTheme }) => {
               >
                 {pageState === "Sign_in" ? "Sign In" : "MyAccount"}
               </div>
-              {/* Booking button */}
               <Link to="/Form">
                 <li className="flex ml-4 px-3 font-semibold text-orange-50 hover:text-primary dark:text-white dark:hover:text-primary duration-200 h-fit bg-primary hover:bg-black rounded-full py-2 dark:bg-primary dark:hover:bg-white shadow-lg shadow-gray-400 dark:shadow-lg dark:shadow-zinc-700">
                   <span>Booking</span>
@@ -280,7 +126,6 @@ const Navbar = ({ theme, setTheme }) => {
               </Link>
             </div>
           </div>
-          {/* Dark mode toggle */}
           <div className="cursor-pointer">
             {theme === "dark" ? (
               <BiSolidSun onClick={toggleTheme} className="text-2xl" />

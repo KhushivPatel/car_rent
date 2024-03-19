@@ -1,71 +1,94 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import whiteCar from "../../assets/images/car_light.png";
-import car2 from "../../assets/images/car_light.png";
-import car3 from "../../assets/images/car_light.png";
+import { Link, useNavigate } from "react-router-dom";
 import { FaCloudMoon, FaRoad } from "react-icons/fa";
 import { IoIosMan } from "react-icons/io";
 import { LuParkingCircle } from "react-icons/lu";
+import cd_1 from "../../assets/images/cd_1.png";
+import cd1 from "../../assets/images/cd1.jpg";
+import cd_2 from "../../assets/images/cd_2.png";
+import cd2 from "../../assets/images/cd2.png";
+import cd_3 from "../../assets/images/cd_3.png";
+import cd3 from "../../assets/images/cd3.jpg";
+import cd_4 from "../../assets/images/cd_4.png";
+import cd4 from "../../assets/images/cd4.png";
+import cd_5 from "../../assets/images/cd_5.png";
+import cd5 from "../../assets/images/cd5.png";
+import cd_6 from "../../assets/images/cd_6.png";
+import cd6 from "../../assets/images/cd6.png";
 
 const CarList = () => {
   const carList = [
     {
-      name: "BMW UX",
-      price: 250,
+      name: "HUNDAU XCENT",
+      price: 200,
       person: 4,
       parking: "Extra Charge",
-      km: 17,
-      image: whiteCar,
+      km: 250,
+      image: cd_1,
+      image2: cd1,
       aosDelay: 0,
+      rs: 10,
     },
     {
-      name: "KIA UX",
-      price: 140,
+      name: "INNOVA CRYSTA",
+      price: 250,
+      person: 7,
+      parking: "Extra Charge",
+      km: 250,
+      rs: 17,
+      image: cd_2,
+      image2: cd2,
+      aosDelay: 500,
+    },
+    {
+      name: "TEMPO TRAVELER(13 SEATS)",
+      price: 400,
+      person: 13,
+      parking: "Extra Charge",
+      km: 250,
+      rs: 18,
+      image: cd_3,
+      image2: cd3,
+      aosDelay: 1000,
+    },
+
+    {
+      name: "ERTIGA",
+      price: 200,
       person: 6,
       parking: "Extra Charge",
-      km: 17,
-      image: car2,
-      aosDelay: 500,
-    },
-    {
-      name: "BMW UX",
-      price: 100,
-      person: 7,
-      parking: "Extra Charge",
-      km: 17,
-      image: car3,
+      km: 250,
+      rs: 13,
+      image: cd_4,
+      image2: cd4,
       aosDelay: 1000,
     },
-    // Add three more cars
+
     {
-      name: "Toyota UX",
-      price: 120,
-      person: 2,
+      name: "TEMPO TRAVELER(17 SEATS)",
+      price: 500,
+      person: 17,
       parking: "Extra Charge",
-      km: 17,
-      image: whiteCar,
+      km: 250,
+      rs: 20,
+      image: cd_5,
+      image2: cd5,
+      aosDelay: 1000,
+    },
+    {
+      name: "INNOVA",
+      price: 200,
+      person: 7,
+      parking: "Extra Charge",
+      km: 250,
+      rs: 17,
+      image: cd_6,
+      image2: cd6,
       aosDelay: 0,
-    },
-    {
-      name: "Honda UX",
-      price: 110,
-      person: 4,
-      parking: "Extra Charge",
-      km: 17,
-      image: car2,
-      aosDelay: 500,
-    },
-    {
-      name: "Tesla UX",
-      price: 180,
-      person: 7,
-      parking: "Extra Charge",
-      km: 17,
-      image: car3,
-      aosDelay: 1000,
     },
   ];
 
+ 
   return (
     <div className="container mt-8">
       <h1
@@ -84,6 +107,7 @@ const CarList = () => {
 };
 
 const CarCard = ({ car }) => {
+  const navigate = useNavigate();
   return (
     <div
       className="border-2 border-gray-300 hover:border-primary p-3 rounded-xl relative group"
@@ -99,7 +123,10 @@ const CarCard = ({ car }) => {
       </div>
       <div className="space-y-2">
         <Link
-          to={`/car/${encodeURIComponent(car.name)}`}
+          to={{
+            pathname: `/car/${encodeURIComponent(car.name)}`,
+            state: { car: car }, // Pass the car object as state
+          }}
           className="text-primary font-semibold"
         >
           {car.name}
@@ -119,11 +146,20 @@ const CarCard = ({ car }) => {
             state: { car: car }, // Pass the car object as state
           }}
           className="justify-center flex text-xl text-primary text-center"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(`/car/${encodeURIComponent(car.name)}`, {
+              state: { car: car },
+            });
+          }}
         >
+          {console.log(car)}
           View Details
         </Link>
       </div>
-      <p className="text-xl font-semibold absolute top-0 left-3">12Km/Day</p>
+      <p className="text-xl font-semibold absolute top-0 left-3">
+        {car.rs}RS/DAY
+      </p>
     </div>
   );
 };
@@ -136,3 +172,4 @@ const CarInfo = ({ icon, text }) => (
 );
 
 export default CarList;
+``;

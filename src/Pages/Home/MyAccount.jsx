@@ -3,7 +3,7 @@ import { db } from "../../Firebase";
 import { toast } from "react-toastify";
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router";
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, query, updateDoc, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { MdDelete } from "react-icons/md";
@@ -47,7 +47,7 @@ const MyAccount = () => {
       [id]: value,
     }));
   };
-
+  // console.log(auth.currentUser);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -55,7 +55,8 @@ const MyAccount = () => {
         await updateProfile(auth.currentUser, {
           displayName: formData.name,
         });
-        const docRef = doc(db, "users", auth.currentUser.uid);
+
+        const docRef = doc(db, "users", auth.currentUser.email); //uid
         await updateDoc(docRef, { name: formData.name });
       }
       toast.success("Profile is updated");
@@ -69,10 +70,22 @@ const MyAccount = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
+    // const listingRef = collection(db, "listings");
+    // console.log(auth.currentUser.uid);
+    // const q = query(
+    //   listingRef,
+    //   where("userRef", "==", auth.currentUser.uid),
+
+    //   orderBy("timestamp", "desc")
+    // );
+    // console.log(listingRef);
+    // const querySnap = await getDocs(q);
     const fetchData = async () => {
       try {
         const value = collection(db, "Booking");
-        const querySnapshot = await getDocs(value);
+
+        const q = query(value, where("Email", "==", auth.currentUser.email));
+        const querySnapshot = await getDocs(q);
         const data = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -364,11 +377,16 @@ const MyAccount = () => {
         </div>
         <div className="flex justify-center">
           <Link
-            to={{
+            to={ {
               pathname: "/Payment",
               state: { subtotal: subtotal, bookings: bookings },
+            } }
+            onClick={(e)=>{
+                e.preventDefault();
+                navigate("/Payment", {state: {subtotal, bookings }})
             }}
           >
+            {console.log(bookings)}
             <button className="bg-primary hover:bg-yellow-500 justify-center flex items-center text-center text-gray-900 font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
               PROCEED TO CHECKOUT
             </button>

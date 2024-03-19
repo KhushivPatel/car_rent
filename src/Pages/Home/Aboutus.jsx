@@ -43,6 +43,8 @@ const Aboutus = () => {
             </div>
             {/* Text Section */}
             <div className="order-2 sm:order-1 space-y-6 sm:pr-32">
+            <div>
+
               <h1
                 className="text-2xl lg:text-2xl font-semibold font-serif"
                 data-aos="fade-up"
@@ -62,6 +64,7 @@ const Aboutus = () => {
                 providing top-notch taxi services that ensure comfort, safety,
                 and convenience.
               </h3>
+            </div>
             </div>
           </div>
         </div>
@@ -83,6 +86,8 @@ const Aboutus = () => {
             </div>
             {/* Text Section */}
             <div className="order-1 sm:order-2 space-x-6 sm:pl-32 ">
+            <div>
+
               <h1
                 className="text-2xl lg:text-2xl font-semibold font-serif"
                 data-aos="fade-up"
@@ -124,6 +129,7 @@ const Aboutus = () => {
                 and beyond.
               </h3>
             </div>
+            </div>
           </div>
         </div>
       </div>
@@ -145,6 +151,8 @@ const Aboutus = () => {
             </div>
             {/* Text Section */}
             <div className="order-2 sm:order-1 space-y-6 sm:pr-32">
+            <div>
+
               <h1
                 className="text-2xl lg:text-2xl font-semibold font-serif"
                 data-aos="fade-up"
@@ -163,6 +171,7 @@ const Aboutus = () => {
                 track your driver’s location in real-time. We put the power of
                 transportation in your hands.
               </h3>
+            </div>
             </div>
           </div>
         </div>
@@ -184,6 +193,8 @@ const Aboutus = () => {
             </div>
             {/* Text Section */}
             <div className="order-1 sm:order-2 space-y-6 sm:pr-32">
+            <div>
+
               <h1
                 className="text-2xl lg:text-2xl font-semibold font-serif"
                 data-aos="fade-up"
@@ -205,6 +216,7 @@ const Aboutus = () => {
                 explore its surroundings, and set out on exciting adventures
                 with Baba Mahakal Tour and Travels.
               </h3>
+            </div>
             </div>
           </div>
         </div>

@@ -21,8 +21,12 @@ import Form from "./assets/Component/Form";
 import Count from "./assets/Component/Count";
 import CarList from "./Pages/Home/CarList";
 import Payment from "./assets/Component/Payment";
-
+import Packages from "./Pages/Home/Packages";
+import Ser from "./assets/Component/Ser";
 import CarD from "./assets/Component/CarD";
+import Pay from "./assets/Component/Pay";
+import Blogs from "./Pages/Home/Blogs";
+import CommentForm from "./assets/Component/CommentForm";
 
 const App = () => {
   // dark mode start
@@ -69,6 +73,13 @@ const App = () => {
           <Route path="/Aboutus" element={<Aboutus theme={theme} />} />
           <Route path="/Form" element={<Form theme={theme} />} />
           <Route path="/Count" element={<Count theme={theme} />} />
+          <Route path="/Ser" element={<Ser theme={theme} />} />
+          <Route path="/CarList" element={<CarList theme={theme} />} />
+          <Route path="/car/:name" element={<CarD />} />
+          <Route path="/Packages" element={<Packages theme={theme} />} />
+          <Route path="/Pay" element={<Pay theme={theme} />} />
+          <Route path="/Blogs" element={<Blogs theme={theme} />} />
+          <Route path="/CommentForm" element={<CommentForm theme={theme} />} />
 
           <Route exact path="/" component={CarList} />
           <Route path="/car/:name" component={CarD} />

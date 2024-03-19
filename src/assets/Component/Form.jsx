@@ -18,9 +18,12 @@ import car6 from "../../assets/images/f6.png";
 import car7 from "../../assets/images/f7.png";
 import car8 from "../../assets/images/f8.png";
 import car9 from "../../assets/images/f9.png";
+import form from "../images/form.jpeg";
+import { getAuth } from "firebase/auth";
 
 const Form = () => {
   // const [image, setImage] = useState(null);
+  const auth = getAuth();
   const [pickupDate, setPickupDate] = useState(null);
   const [dropoffDate, setDropoffDate] = useState(null);
   const [selectedPickupPlace, setSelectedPickupPlace] = useState("");
@@ -28,6 +31,7 @@ const Form = () => {
   const [selectedPackage, setSelectedPackage] = useState("");
   const [selectedCar, setSelectedCar] = useState("");
   const [val, setVal] = useState([]);
+  const [Price, setPrice] = useState("1,000"); // Default price
 
   const cars = [
     {
@@ -145,19 +149,31 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (dropoffDate > pickupDate) {
-      // Process form submission
-      toast.success("Form submitted successfully!");
-      setPickupDate(null);
-      setDropoffDate(null);
-      setSelectedPickupPlace("");
-      setSelectedDropoffPlace("");
-      setSelectedPackage("");
-      setSelectedCar("");
-    } else {
-      alert("Drop-off date must be greater than pick-up date");
-    }
+     if (dropoffDate > pickupDate) {
+       let updatedPrice = "1,000"; // Default price
+
+       // Update price based on selected package
+       if (selectedPackage === "Local Trip") {
+         updatedPrice = "4,500"; // Update price for local trip
+       }
+
+       // Set the price state
+       setPrice(updatedPrice);
+       // Process form submission
+       toast.success("Form submitted successfully!");
+       setPickupDate(null);
+       setDropoffDate(null);
+       setSelectedPickupPlace("");
+       setSelectedDropoffPlace("");
+       setSelectedPackage("");
+       setSelectedCar("");
+     } else {
+       alert("Drop-off date must be greater than pick-up date");
+     }
   };
+
+  // Inside the handleSubmit function
+
   // firebase
   const value = collection(db, "Booking");
 
@@ -173,6 +189,7 @@ const Form = () => {
         selectedCar: selectedCar,
         carImage: selectedCarInfo.image,
         carPrice: selectedCarInfo.price,
+        Email: auth.currentUser.email,
       });
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -191,188 +208,171 @@ const Form = () => {
   //
   return (
     <>
-      <div className="pb-4 dark:bg-semi justify-center items-center flex">
-        <div className="w-full md:w-[67%] lg:w-[40%]  bg-primary  bg-opacity-50 h-fit  px-5 mb-2 rounded-xl  ">
-          <h2 className="text-3xl font-semibold my-6 text-center ">
-            Booking Vehicle
-          </h2>
-          <form onSubmit={handleSubmit} className="px-6">
-            <div className="mb-4 ">
-              <label
-                htmlFor="car"
-                className="block font-medium mb-1 justify-center  "
-              >
-                <FaCar
-                  className="absolute mt-[3px]  ml-[-20px] text-3xl text-semi
+      {/*  */}
+      <div className="pb-4 dark:bg-semi justify-center items-center flex pt-9">
+        <div className="flex w-full md:w-[80%] lg:w-[70%] bg-yellow-100  dark:bg-gray-600 px-5 mb-2 rounded-xl">
+          <img
+            src={form}
+            alt="Car"
+            className="w-[400px] h-[400px] rounded-lg  mt-7 mr-5"
+          />
+          <div className="w-[60%] px-5">
+            <h2 className="text-3xl font-semibold my-6 text-center">
+              Booking Vehicle
+            </h2>
+            <form onSubmit={handleSubmit}>
+              {" "}
+              <div className="mb-4 ">
+                <label
+                  htmlFor="car"
+                  className="block font-medium mb-1 justify-center  "
+                >
+                  <FaCar
+                    className="absolute mt-[3px]  ml-[-20px] text-3xl text-semi
             cursor-pointer justify-center text-center dark:text-white"
-                />
-              </label>
-              <select
-                id="car"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
-                value={selectedCar}
-                onChange={(e) => setSelectedCar(e.target.value)}
-              >
-                <option value="">Select a car</option>
-                {cars.map((car, index) => (
-                  <option key={index} value={car.name}>
-                    {car.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {/* {selectedCar && (
-              <div>
-                <img
-                  src={cars.find((car) => car.name === selectedCar)?.image}
-                  alt={selectedCar}
+                  />
+                </label>
+                <select
+                  id="car"
+                  className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
+                  value={selectedCar}
+                  onChange={(e) => setSelectedCar(e.target.value)}
+                >
+                  <option value="">Select a car</option>
+                  {cars.map((car, index) => (
+                    <option key={index} value={car.name}>
+                      {car.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="car"
+                  className="block font-medium mb-1 justify-center "
+                >
+                  <ImLocation2
+                    className="absolute mt-[3px] ml-[-20px] text-2xl text-semi
+            cursor-pointer justify-center text-center dark:text-white"
+                  />
+                </label>
+                <select
+                  id="pickupPlace"
+                  className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
+                  value={selectedPickupPlace}
+                  onChange={(e) => setSelectedPickupPlace(e.target.value)}
+                >
+                  <option value="">Select a pickup place</option>
+                  {pickupPlaces.map((place, index) => (
+                    <option key={index} value={place}>
+                      {place}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="car"
+                  className="block font-medium mb-1 justify-center "
+                >
+                  <ImLocation2
+                    className="absolute mt-[3px] ml-[-20px] text-2xl text-semi
+            cursor-pointer justify-center text-center dark:text-white"
+                  />
+                </label>
+                <select
+                  id="dropoffPlace"
+                  className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
+                  value={selectedDropoffPlace}
+                  onChange={(e) => setSelectedDropoffPlace(e.target.value)}
+                >
+                  <option value="">Select a drop-off place</option>
+                  {dropoffPlaces.map((place, index) => (
+                    <option key={index} value={place}>
+                      {place}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="car"
+                  className="block font-medium mb-1 justify-center "
+                >
+                  <CiBoxList
+                    className="absolute mt-[3px] ml-[-20px] text-3xl text-semi
+            cursor-pointer justify-center text-center dark:text-white"
+                  />
+                </label>
+                <select
+                  id="package"
+                  className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
+                  value={selectedPackage}
+                  onChange={(e) => setSelectedPackage(e.target.value)}
+                >
+                  <option value="">Select a package</option>
+                  {packages.map((pkg, index) => (
+                    <option key={index} value={pkg}>
+                      {pkg}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="car"
+                  className="block font-medium mb-1 justify-center "
+                >
+                  <SlCalender
+                    className="absolute mt-[3px] ml-[-20px] text-xl  text-semi
+            cursor-pointer justify-center text-center  dark:text-white"
+                  />
+                </label>
+                <DatePicker
+                  id="pickupDate"
+                  selected={pickupDate}
+                  placeholderText=" Pick Up"
+                  onChange={handlePickupDateChange}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
                 />
               </div>
-            )} */}
-            <div className="mb-4">
-              <label
-                htmlFor="car"
-                className="block font-medium mb-1 justify-center "
-              >
-                <ImLocation2
-                  className="absolute mt-[3px] ml-[-20px] text-2xl text-semi
+              <div className="mb-4">
+                <label
+                  htmlFor="car"
+                  className="block font-medium mb-1 justify-center "
+                >
+                  <SlCalender
+                    className="absolute mt-[3px] ml-[-20px] text-xl text-semi
             cursor-pointer justify-center text-center dark:text-white"
+                  />
+                </label>
+                <DatePicker
+                  id="dropoffDate"
+                  placeholderText=" Drop Off"
+                  selected={dropoffDate}
+                  onChange={handleDropoffDateChange}
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
                 />
-              </label>
-              <select
-                id="pickupPlace"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
-                value={selectedPickupPlace}
-                onChange={(e) => setSelectedPickupPlace(e.target.value)}
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-primary px-7 py-3 text-white text-sm font-medium uppercase rounded-full shadow-md hover:bg-semi transition duration-150 ease-in-out hover:shadow-lg active:bg-semi mb-5"
+                onClick={handleCreate}
               >
-                <option value="">Select a pickup place</option>
-                {pickupPlaces.map((place, index) => (
-                  <option key={index} value={place}>
-                    {place}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="car"
-                className="block font-medium mb-1 justify-center "
-              >
-                <ImLocation2
-                  className="absolute mt-[3px] ml-[-20px] text-2xl text-semi
-            cursor-pointer justify-center text-center dark:text-white"
-                />
-              </label>
-              <select
-                id="dropoffPlace"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
-                value={selectedDropoffPlace}
-                onChange={(e) => setSelectedDropoffPlace(e.target.value)}
-              >
-                <option value="">Select a drop-off place</option>
-                {dropoffPlaces.map((place, index) => (
-                  <option key={index} value={place}>
-                    {place}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="car"
-                className="block font-medium mb-1 justify-center "
-              >
-                <CiBoxList
-                  className="absolute mt-[3px] ml-[-20px] text-3xl text-semi
-            cursor-pointer justify-center text-center dark:text-white"
-                />
-              </label>
-              <select
-                id="package"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
-                value={selectedPackage}
-                onChange={(e) => setSelectedPackage(e.target.value)}
-              >
-                <option value="">Select a package</option>
-                {packages.map((pkg, index) => (
-                  <option key={index} value={pkg}>
-                    {pkg}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="car"
-                className="block font-medium mb-1 justify-center "
-              >
-                <SlCalender
-                  className="absolute mt-[3px] ml-[-20px] text-xl  text-semi
-            cursor-pointer justify-center text-center  dark:text-white"
-                />
-              </label>
-              <DatePicker
-                id="pickupDate"
-                selected={pickupDate}
-                placeholderText=" Pick Up"
-                onChange={handlePickupDateChange}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="car"
-                className="block font-medium mb-1 justify-center "
-              >
-                <SlCalender
-                  className="absolute mt-[3px] ml-[-20px] text-xl text-semi
-            cursor-pointer justify-center text-center dark:text-white"
-                />
-              </label>
-              <DatePicker
-                id="dropoffDate"
-                placeholderText=" Drop Off"
-                selected={dropoffDate}
-                onChange={handleDropoffDateChange}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={15}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                className="block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 h-9 mx-5"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-primary px-7 py-3 text-white text-sm font-medium uppercase rounded-full shadow-md hover:bg-semi transition duration-150 ease-in-out hover:shadow-lg active:bg-semi mb-5"
-              onClick={handleCreate}
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-
-        {/* {val.map((values) => (
-          <div key={values.id}>
-            <h1>
-              Pickup Date:{" "}
-              {new Date(values.pickupdate.seconds * 1000).toLocaleString()}
-            </h1>
-            <h2>
-              Drop-off Date:{" "}
-              {new Date(values.dropoffdate.seconds * 1000).toLocaleString()}
-            </h2>
-            <p>Pickup Place: {values.selectedPickupPlace}</p>
-            <p>Drop-off Place: {values.selectedDropoffPlace}</p>
-            <p>Package: {values.selectedPackage}</p>
-            <p>Car: {values.selectedCar}</p>
+                Submit
+              </button>
+            </form>
           </div>
-        ))} */}
-        {/* <MyAccount bookings={val} /> */}
+        </div>
+        {/* Rest of the content */}
       </div>
     </>
   );

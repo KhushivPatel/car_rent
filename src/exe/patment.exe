@@ -11,22 +11,29 @@ import {
   doc,
   getDocs,
 } from "firebase/firestore";
-import GooglePayButton from "@google-pay/button-react";
-import payment from "../images/payment.jpeg";
 
 const Payment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [subtotal, setSubtotal] = useState(location.state.subtotal ?? []);
   const [bookings, setBookings] = useState(location.state.bookings ?? []);
-  const [name, setName] = useState("");
-  const [country, setCountry] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [town, setTown] = useState("");
-  const [state, setState] = useState("");
-  const [pin, setPin] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("Online");
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const value = collection(db, "Booking");
+  //       const querySnapshot = await getDocs(value);
+  //       const data = querySnapshot.docs.map((doc) => ({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       }));
+  //       setBookings(data);
+  //     } catch (error) {
+  //       console.error("Error fetching documents: ", error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     const subtotalValue = bookings.reduce((acc, booking) => {
@@ -38,6 +45,93 @@ const Payment = () => {
 
     setSubtotal(subtotalValue);
   }, [bookings]);
+
+  // const handlePlaceOrder = async () => {
+  //   try {
+  //     // Save booking details to Firebase Payment collection
+  //     await Promise.all(
+  //       bookings.map(async (booking) => {
+  //         const docRef = await addDoc(collection(db, "Payment"), booking);
+  //         console.log("Document written with ID: ", docRef.id);
+
+  //         // Delete booking from the Booking collection after moving to Payment
+  //         await deleteDoc(doc(db, "Booking", booking.id));
+  //       })
+  //     );
+
+  //     // Clear booking data from the state
+  //     setBookings([]);
+
+  //     // Show success toast message
+  //     toast.success("Order placed successfully!", {
+  //       onClose: () => {
+  //         // console.log("hi");
+  //         // Navigate back to myaccount page after toast is closed
+  //         navigate("/Home");
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error("Error adding document: ", error);
+  //   }
+  // };
+
+  // const handlePlaceOrder = async () => {
+  //   try {
+  //     // Save booking details and form data to Firebase Payment collection
+  //     await Promise.all(
+  //       bookings.map(async (booking) => {
+  //         const paymentData = {
+  //           ...booking,
+  //           name,
+  //           country,
+  //           streetAddress,
+  //           town,
+  //           state,
+  //           pin,
+  //           phoneNumber,
+  //         };
+  //         const docRef = await addDoc(collection(db, "Payment"), paymentData);
+
+  //         console.log("Document written with ID: ", docRef.id);
+
+  //         // Delete booking from the Booking collection after moving to Payment
+  //         await deleteDoc(doc(db, "Booking", booking.id));
+  //       })
+  //     );
+
+  //     // Clear booking data from the state
+  //     setBookings([]);
+
+  //     // Reset form fields
+  //     setName("");
+  //     setCountry("");
+  //     setStreetAddress("");
+  //     setTown("");
+  //     setState("");
+  //     setPin("");
+  //     setPhoneNumber("");
+
+  //     // Show success toast message
+  //     toast.success("Order placed successfully!", {
+  //       onClose: () => {
+  //         navigate("/Home");
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error("Error adding document: ", error);
+  //   }
+  // };
+
+  // kam nu upper nu
+
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [town, setTown] = useState("");
+  const [state, setState] = useState("");
+  const [pin, setPin] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,77 +173,21 @@ const Payment = () => {
     }
   };
 
-  // const handlePlaceOrder = async () => {
-  //   try {
-  //     if (!paymentMethod) {
-  //       toast.error("Please select a payment method.");
-  //       return;
-  //     }
-
-  //     if (paymentMethod === "online") {
-  //       // Implement online payment logic here
-  //       // For example, redirect to payment gateway
-  //       // Simulating redirect to payment gateway
-  //       console.log("Redirecting to payment gateway...");
-  //       setTimeout(() => {
-  //         console.log("Payment successful!");
-  //         // Clear booking data from the state after successful payment
-  //         setBookings([]);
-  //         // Show success toast message
-  //         toast.success("Order placed successfully!", {
-  //           onClose: () => {
-  //             navigate("/Home");
-  //           },
-  //         });
-  //       }, 2000); // Simulating 2 seconds delay for payment processing
-  //     } else if (paymentMethod === "cod") {
-  //       // Save booking details to Firebase Payment collection
-  //       await Promise.all(
-  //         bookings.map(async (booking) => {
-  //           const docRef = await addDoc(collection(db, "Payment"), booking);
-  //           console.log("Document written with ID: ", docRef.id);
-
-  //           // Delete booking from the Booking collection after moving to Payment
-  //           await deleteDoc(doc(db, "Booking", booking.id));
-  //         })
-  //       );
-
-  //       // Clear booking data from the state
-  //       setBookings([]);
-
-  //       // Show success toast message
-  //       toast.success("Order placed successfully!", {
-  //         onClose: () => {
-  //           navigate("/Home");
-  //         },
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error("Error adding document: ", error);
-  //     toast.error("An error occurred while placing the order.");
-  //   }
-  // };
-
   const handlePlaceOrder = async () => {
     try {
-      if (
-        !name ||
-        !country ||
-        !streetAddress ||
-        !town ||
-        !state ||
-        !pin ||
-        !phoneNumber
-      ) {
-        alert("Please fill in all fields.");
-        return;
-      }
       if (!paymentMethod) {
         toast.error("Please select a payment method.");
         return;
       }
 
+      if (!validateForm()) {
+        toast.error("Please fill in all fields.");
+        return;
+      }
       if (paymentMethod === "online") {
+        // Implement online payment logic here
+        // For example, redirect to payment gateway
+        // Simulating redirect to payment gateway
         console.log("Redirecting to payment gateway...");
         setTimeout(() => {
           console.log("Payment successful!");
@@ -163,13 +201,10 @@ const Payment = () => {
           });
         }, 2000); // Simulating 2 seconds delay for payment processing
       } else if (paymentMethod === "cod") {
-        // Save booking details and payment method to Firebase Payment collection
+        // Save booking details to Firebase Payment collection
         await Promise.all(
           bookings.map(async (booking) => {
-            const docRef = await addDoc(collection(db, "Payment"), {
-              ...booking,
-              paymentMethod: "cod",
-            });
+            const docRef = await addDoc(collection(db, "Payment"), booking);
             console.log("Document written with ID: ", docRef.id);
 
             // Delete booking from the Booking collection after moving to Payment
@@ -192,11 +227,10 @@ const Payment = () => {
       toast.error("An error occurred while placing the order.");
     }
   };
-
   return (
     <>
-      <div className="dark:bg-semi pb-12 object-top">
-        <div className="container mx-auto  ">
+      <div className="dark:bg-semi pb-12">
+        <div className="container mx-auto px-4 ">
           <p className="text-xl dark:text-gray-400 rounded-md py-4  ">
             <span className="font-bold">Note:</span> Maximum Distance Limit :
             250 km /day
@@ -205,7 +239,7 @@ const Payment = () => {
             Billing & Shipping
           </h1>
           {/* details start */}
-          {/* <div className="flex  py-5">
+          <div className="flex  py-5">
             <div className="w-full md:w-[80%] lg:w-[60%] bg-gray-200 p-8 rounded-lg shadow-lg">
               <h2 className="text-3xl font-semibold mb-8 text-center">
                 My Detail
@@ -312,148 +346,7 @@ const Payment = () => {
                 </div>
               </form>
             </div>
-          </div> */}
-          <div className="flex py-5 mb-7 dark:text-white">
-            <div className="relative w-full md:w-3/4 lg:w-2/3 flex flex-col md:flex-row items-center">
-              <div className="w-full md:w-1/2">
-                <h2 className="text-3xl font-semibold mb-8 text-center">
-                  fill up the form
-                </h2>
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="name"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="   Enter your name"
-                        required
-                      />
-                    </div>
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="country"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        Country
-                      </label>
-                      <input
-                        type="text"
-                        id="country"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        placeholder="   Enter your country"
-                        required
-                      />
-                    </div>
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="streetAddress"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        Address
-                      </label>
-                      <input
-                        type="text"
-                        id="streetAddress"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={streetAddress}
-                        onChange={(e) => setStreetAddress(e.target.value)}
-                        placeholder="   Enter your street address"
-                        required
-                      />
-                    </div>
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="town"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        Town
-                      </label>
-                      <input
-                        type="text"
-                        id="town"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={town}
-                        onChange={(e) => setTown(e.target.value)}
-                        placeholder="   Enter your town"
-                        required
-                      />
-                    </div>
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="state"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        State
-                      </label>
-                      <input
-                        type="text"
-                        id="state"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                        placeholder="   Enter your state"
-                        required
-                      />
-                    </div>
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="pin"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        Pin Code
-                      </label>
-                      <input
-                        type="text"
-                        id="pin"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={pin}
-                        onChange={(e) => setPin(e.target.value)}
-                        placeholder="  Enter your pin code"
-                        required
-                      />
-                    </div>
-                    <div className="flex items-center">
-                      <label
-                        htmlFor="phoneNumber"
-                        className="block w-24 font-medium mr-2"
-                      >
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phoneNumber"
-                        className="input flex-grow bg-gray-200 rounded-md h-9 "
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                        placeholder="  Enter your phone number"
-                        required
-                      />
-                    </div>
-                  </div>
-                  {/* <div className="hidden md:block md:w-1/4 flex justify-center items-center">
-                  
-                    <img
-                      src={payment}
-                      alt="Image"
-                      className="object-cover w-full h-full rounded-lg"
-                    />
-                  </div> */}
-                </form>
-              </div>
-            </div>
           </div>
-
           {/* details end */}
           <div className="gap-8">
             <div className="flex flex-col">
@@ -543,66 +436,24 @@ const Payment = () => {
             </div>
             {/* Payment options */}
             <div className="grid grid-cols-1 gap-6">
-              <label className="flex gap-3">
+              <label>
                 <input
                   type="radio"
                   value="online"
                   checked={paymentMethod === "online"}
                   onChange={() => setPaymentMethod("online")}
-                  className="dark:text-white gap-3 flex"
+                  className=""
                 />
-                <p className="dark:text-white gap-3">Online Payment</p>
+                Online Payment
               </label>
-              {paymentMethod === "online" && (
-                <div className="flex flex-col justify-center items-center space-y-8">
-                  <GooglePayButton
-                    environment="TEST"
-                    paymentRequest={{
-                      apiVersion: 2,
-                      apiVersionMinor: 0,
-                      allowedPaymentMethods: [
-                        {
-                          type: "CARD",
-                          parameters: {
-                            allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-                            allowedCardNetworks: ["MASTERCARD", "VISA"],
-                          },
-                          tokenizationSpecification: {
-                            type: "PAYMENT_GATEWAY",
-                            parameters: {
-                              gateway: "example",
-                              gatewayMerchantId: "exampleGatewayMerchantId",
-                            },
-                          },
-                        },
-                      ],
-                      merchantInfo: {
-                        merchantId: "12345678901234567890",
-                        merchantName: "Demo Merchant",
-                      },
-                      transactionInfo: {
-                        totalPriceStatus: "FINAL",
-                        totalPriceLabel: "Total",
-                        totalPrice: "100.00",
-                        currencyCode: "USD",
-                        countryCode: "US",
-                      },
-                    }}
-                    onLoadPaymentData={(paymentRequest) => {
-                      console.log("load payment data", paymentRequest);
-                    }}
-                  />
-                </div>
-              )}
-              <label className="flex gap-3">
+              <label>
                 <input
                   type="radio"
                   value="cod"
                   checked={paymentMethod === "cod"}
                   onChange={() => setPaymentMethod("cod")}
-                  className="dark:text-white gap-3"
                 />
-                <p className="dark:text-white gap-3">Cash on Delivery</p>
+                Cash on Delivery
               </label>
             </div>
             <button
@@ -619,3 +470,26 @@ const Payment = () => {
 };
 
 export default Payment;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
