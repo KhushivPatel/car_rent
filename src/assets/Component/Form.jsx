@@ -208,14 +208,14 @@ const Form = () => {
   //
   return (
     <div className="pb-4 dark:bg-semi justify-center items-center flex pt-9">
-      <div className="flex w-full md:w-[80%] lg:w-[70%] bg-yellow-100  dark:bg-gray-600 px-5 mb-2 rounded-xl">
+      <div className="flex flex-col md:flex-row w-full md:w-[80%] lg:w-[70%] bg-yellow-100 dark:bg-gray-600 px-5 mb-2 rounded-xl">
         <img
           src={form}
           alt="Car"
-          className="w-[400px] h-[400px] rounded-lg md:h-auto  mb-7 mt-7 mr-5"
+          className="w-full md:w-[400px] h-auto rounded-lg md:h-[400px] mb-7 mt-7 md:mr-5"
         />
-        <div className="w-[60%] px-5 ">
-          <h2 className="text-3xl font-semibold my-6 text-center">
+        <div className="w-full md:w-[60%] px-5">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold my-6 text-center">
             Booking Vehicle
           </h2>
           <form onSubmit={handleSubmit}>

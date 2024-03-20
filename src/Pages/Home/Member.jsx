@@ -1,7 +1,7 @@
 import React from "react";
-import k from "../../../public/images/m1.jpeg";
-import v from "../../../public/images/m2.jpeg";
-import y from "../../../public/images/m3.jpeg";
+import k from "../../../public/images/m1.png";
+import v from "../../../public/images/m2.png";
+import y from "../../../public/images/m3.png";
 import { FaStar } from "react-icons/fa";
 
 const Member = () => {

@@ -225,26 +225,24 @@ const Contactus = () => {
             Contact Information
           </h1>
           <h3
-            className="text-white text-2xl font-serif mb-7"
+            className="text-white text-xl lg:text-2xl font-serif mb-7"
             data-aos="fade-up"
             data-aos-delay="600"
           >
-            Got any questions? Fell free to reach out to us below....!
+            Got any questions? Feel free to reach out to us below....!
           </h3>
-          <h3 className="text-xl font-bold">
+          <h3 className="text-lg lg:text-xl font-bold">
             Phone:
             <a href="tel:+916261215099" className="text-white">
-              {" "}
               +91 6261215099
             </a>
           </h3>
-          <h3 className="text-xl font-bold">
+          <h3 className="text-lg lg:text-xl font-bold">
             Email:
             <a
               href="mailto:info@babamahakaltourandtravels.in"
               className="text-white"
             >
-              {" "}
               info@babamahakaltourandtravels.in
             </a>
           </h3>

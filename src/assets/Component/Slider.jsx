@@ -7,9 +7,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // Import your images
-import image1 from "../../../public/images/s1.jpg";
-import image2 from "../../../public/images/s2.jpg";
-import image3 from "../../../public/images/s3.jpg";
+import image1 from "../../../public/images/s1.png";
+import image2 from "../../../public/images/s2.png";
+import image3 from "../../../public/images/s3.png";
 // import image4 from "../../assets/images/s4.jpg";
 
 const Slider = () => {
@@ -17,7 +17,7 @@ const Slider = () => {
 
   return (
     <>
-      <div className="text-center mb-5 max-w-[400px] mx-auto">
+      <div className="text-center mb-5 max-w-[400px]  mx-auto">
         <h1 className="text-6xl font-bold">Brands</h1>
       </div>
       <Swiper
@@ -29,19 +29,20 @@ const Slider = () => {
         autoplay={{ delay: 3000 }}
       >
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative w-full">
             <img
               src={image1}
               alt="Slide 1"
               className="w-full h-[500px] object-cover"
             />
-            <p className="text-semi  absolute left-1 top-3 font-medium max-w-[90%] bg-primary shadow-lg opacity-90 p-2 rounded-br-3xl">
+            <p className="text-semi absolute left-1 top-3 font-medium max-w-[90%] bg-primary shadow-lg opacity-90 p-2 rounded-br-3xl">
               SWIFT
             </p>
           </div>
         </SwiperSlide>
+
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative w-full">
             <img
               src={image2}
               alt="Slide 2"
@@ -53,7 +54,7 @@ const Slider = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="relative">
+          <div className="relative w-full">
             <img
               src={image3}
               alt="Slide 3"

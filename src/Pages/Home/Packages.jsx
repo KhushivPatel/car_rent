@@ -92,7 +92,7 @@ const Packages = () => {
                 <p className="text-gray-800 dark:text-white  group-hover:text-white duration-high text-lg line-clamp-2 flex gap-2">
                   {" "}
                   {/* Added margin-right */}
-                  <span className="font-semibold   text-white flex">
+                  <span className="font-semibold   text-black flex">
                     Price:
                   </span>
                   {service.price}
@@ -100,7 +100,7 @@ const Packages = () => {
                 <p className="text-gray-800 dark:text-white group-hover:text-white duration-high text-lg line-clamp-2 flex gap-3">
                   {" "}
                   {/* Removed unnecessary classes */}
-                  <span className="font-semibold text-white flex">
+                  <span className="font-semibold text-black flex">
                     Car Type:
                   </span>{" "}
                   {service.cartype}

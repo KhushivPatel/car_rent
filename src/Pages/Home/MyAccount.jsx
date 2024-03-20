@@ -207,74 +207,8 @@ const MyAccount = () => {
           </div>
         </section>
         {/*  */}
+
         {/* <div className="container mx-auto px-4 py-8 ">
-          <h1 className="text-3xl font-bold  text-center dark:text-primary mb-7">
-            My bookings
-          </h1>
-          <div className="justify-center ">
-            {bookings.length > 0 ? (
-              bookings.map((booking) => (
-                <div
-                  className="bg-white rounded-lg shadow-md p-6 mb-4"
-                  key={booking.id}
-                >
-                  <img
-                    src={booking.carImage}
-                    alt={booking.selectedCar}
-                    className=" w-[200px] h-[120px] border object-cover mr-4"
-                  />
-
-                  <p className="mb-2 text-xl font-semibold">
-                    <span className="font-semibold">Car:</span>{" "}
-                    {booking.selectedCar}
-                  </p>
-                  <p className="mb-2 font-semibold">
-                    <span className="font-semibold">Pickup Place:</span>{" "}
-                    {booking.selectedPickupPlace}
-                  </p>
-                  <p className="mb-2 font-semibold">
-                    <span className="font-semibold">Drop-off Place:</span>{" "}
-                    {booking.selectedDropoffPlace}
-                  </p>
-                  <p className="mb-2 font-semibold">
-                    <span className="font-semibold">Package:</span>{" "}
-                    {booking.selectedPackage}
-                  </p>
-                  {booking.pickupdate && (
-                    <p className="text-md font-semibold mb-2">
-                      Pickup Date:{" "}
-                      {new Date(
-                        booking.pickupdate.seconds * 1000
-                      ).toLocaleString()}
-                    </p>
-                  )}
-                  {booking.dropoffdate && (
-                    <p className="text-md font-medium mb-2">
-                      Drop-off Date:{" "}
-                      {new Date(
-                        booking.dropoffdate.seconds * 1000
-                      ).toLocaleString()}
-                    </p>
-                  )}
-
-                  <p className="ml-auto text-gray-500">{booking.carPrice}</p>
-                  <button
-                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
-                    onClick={() => handleDelete(booking.id)}
-                  >
-                    <MdDelete className="text-2xl" />
-                  </button>
-                </div>
-              ))
-            ) : (
-              <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-md p-6 mb-4 text-center ">
-                <p className="text-xl text-red-500">No bookings found😕</p>
-              </div>
-            )}
-          </div>
-        </div> */}
-
-        <div className="container mx-auto px-4 py-8 ">
           <h1 className="text-3xl font-bold text-center dark:text-primary mb-7">
             My bookings
           </h1>
@@ -344,7 +278,7 @@ const MyAccount = () => {
                     <p className="text-black  text-2xl font-semibold">
                       {booking.carPrice}
                     </p>
-                    {/* You can calculate subtotal here */}
+                  
                   </div>
                   <button
                     className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
@@ -374,7 +308,105 @@ const MyAccount = () => {
               </div>
             )}
           </div>
+        </div> */}
+        <div className="w-full px-4 py-8">
+          <h1 className="text-3xl font-bold text-center dark:text-primary mb-7">
+            My bookings
+          </h1>
+          <div className="flex w-full flex-col items-center justify-center">
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <div
+                  className="w-full md:max-w-3xl bg-white dark:bg-slate-500 rounded-lg shadow-md p-6 mb-4 flex flex-col md:flex-row items-start md:items-center justify-between"
+                  key={booking.id}
+                >
+                  <img
+                    src={booking.carImage}
+                    alt={booking.selectedCar}
+                    className="w-full md:w-[200px] h-[120px] border object-cover mb-4 md:mb-0 md:mr-4"
+                  />
+                  <div>
+                    <p className="mb-2 text-xl font-semibold dark:text-white">
+                      <span className="font-semibold text-gray-500 dark:text-black">
+                        Car:
+                      </span>{" "}
+                      {booking.selectedCar}
+                    </p>
+                    <p className="mb-2 font-semibold dark:text-white">
+                      <span className="font-semibold text-gray-500 dark:text-black">
+                        Pickup Place:
+                      </span>{" "}
+                      {booking.selectedPickupPlace}
+                    </p>
+                    <p className="mb-2 font-semibold dark:text-white">
+                      <span className="font-semibold text-gray-500 dark:text-black">
+                        Drop-off Place:
+                      </span>{" "}
+                      {booking.selectedDropoffPlace}
+                    </p>
+                    <p className="mb-2 font-semibold dark:text-white">
+                      <span className="font-semibold text-gray-500 dark:text-black">
+                        Package:
+                      </span>{" "}
+                      {booking.selectedPackage}
+                    </p>
+                    {booking.pickupdate && (
+                      <p className="text-md font-semibold mb-2 dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
+                          Pickup Date:{" "}
+                        </span>
+                        {new Date(
+                          booking.pickupdate.seconds * 1000
+                        ).toLocaleString()}
+                      </p>
+                    )}
+                    {booking.dropoffdate && (
+                      <p className="text-md font-medium mb-2 dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
+                          Drop-off Date:{" "}
+                        </span>
+                        {new Date(
+                          booking.dropoffdate.seconds * 1000
+                        ).toLocaleString()}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-center md:justify-start mt-4 md:mt-0">
+                    <p className="text-black text-2xl font-semibold">Price=</p>
+                    <p className="text-black text-2xl font-semibold ml-1">
+                      {booking.carPrice}
+                    </p>
+                    <button
+                      className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500 ml-4"
+                      onClick={() => handleDelete(booking.id)}
+                    >
+                      <MdDelete className="text-2xl" />
+                    </button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="w-full md:max-w-3xl bg-white dark:bg-gray-300 rounded-lg shadow-md p-6 mb-4 text-center">
+                <p className="text-xl text-red-500">No bookings found😕</p>
+              </div>
+            )}
+            {bookings.length > 0 && (
+              <div className="w-full md:max-w-3xl bg-white dark:bg-slate-400 rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
+                <div>
+                  <p className="text-xl font-semibold dark:text-white">
+                    Subtotal
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold dark:text-white">
+                    ₹ {subtotal}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
+
         <div className="flex justify-center">
           <Link
             to={{

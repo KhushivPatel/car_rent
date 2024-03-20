@@ -71,12 +71,12 @@ const Navbar = ({ theme, setTheme }) => {
                 </svg>
               </button>
               {isMenuOpen && (
-                <ul className="absolute top-full left-0 w-full bg-white dark:bg-semi dark:text-white py-2 px-4 shadow-lg">
+                <ul className="absolute top-full left-0 w-full bg-white dark:bg-gray-500  hover:text-primary dark:hover:text-primary dark:text-white py-2 px-4 shadow-lg">
                   {MenuLinks.map((link) => (
                     <li key={link.id}>
                       <Link
                         to={link.link}
-                        className={`block py-2 font-semibold text-semi hover:text-primary ${
+                        className={`block py-2 font-semibold  text-semi hover:text-primary ${
                           location.pathname === link.link && "underline"
                         }`}
                         onClick={() => setIsMenuOpen(false)}

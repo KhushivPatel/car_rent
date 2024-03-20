@@ -39,7 +39,7 @@ const CommentForm = ({ updateCommentCount }) => {
   };
 
   return (
-    <div className=" max-w-auto w-[500px]  my-8 justify-start  py-3 px-5 items-start ">
+    <div className="max-w-[95%] mx-auto my-8 justify-start py-3 px-5 items-start">
       <h2 className="text-2xl font-bold mb-4">Leave a Comment</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -54,7 +54,7 @@ const CommentForm = ({ updateCommentCount }) => {
             value={formData.message}
             onChange={handleChange}
             rows="4"
-            placeholder=" Your Comment"
+            placeholder="Your Comment"
             className="mt-1 block w-full bg-gray-200 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           ></textarea>
         </div>
@@ -69,7 +69,7 @@ const CommentForm = ({ updateCommentCount }) => {
             type="text"
             id="name"
             value={formData.name}
-            placeholder=" Name"
+            placeholder="Name"
             onChange={handleChange}
             className="mt-1 block w-full h-9 bg-gray-200 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
@@ -86,7 +86,7 @@ const CommentForm = ({ updateCommentCount }) => {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder=" Email"
+            placeholder="Email"
             className="mt-1 block w-full h-9 bg-gray-200 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
