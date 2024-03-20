@@ -7,9 +7,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // Import your images
-import image1 from "../../assets/images/s1.jpg";
-import image2 from "../../assets/images/s2.jpg";
-import image3 from "../../assets/images/s3.jpg";
+import image1 from "../../../public/images/s1.jpg";
+import image2 from "../../../public/images/s2.jpg";
+import image3 from "../../../public/images/s3.jpg";
 // import image4 from "../../assets/images/s4.jpg";
 
 const Slider = () => {

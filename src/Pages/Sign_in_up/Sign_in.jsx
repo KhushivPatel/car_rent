@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { db } from "../../Firebase";
 import { MdEmail } from "react-icons/md";
-import su from "../../assets/images/su.png";
+import su from "../../../public/images/su.png";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 const Sign_in = () => {
@@ -74,7 +74,7 @@ const Sign_in = () => {
           </button>
           {/* <img src="img/signin1.jpg" className=" object-cover w-full"></img> */}
         </div>
-        <div className="w-full md:w-[67%] lg:w-[40%]  bg-white bg-opacity-50 h-fit  px-5 mb-2 rounded-xl">
+        <div className="w-full md:w-[67%] lg:w-[40%] mt-9 bg-white bg-opacity-50 h-fit  px-5 mb-2 rounded-xl">
           <form>
             <h1 className="text-center font-semibold text-3xl mt-3 mb-4 text-semi ">
               Sign In

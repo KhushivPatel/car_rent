@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import about from "../../assets/images/packages.jpeg";
-import k from "../../assets/images/ujjain.jpg";
-import v from "../../assets/images/indore.jpg";
-import y from "../../assets/images/allin.jpg";
+import about from "../../../public/images/packages.jpeg";
+import k from "../../../public/images/ujjain.jpg";
+import v from "../../../public/images/indore.jpg";
+import y from "../../../public/images/allin.jpg";
 import Form from "../../assets/Component/Form";
 
 const Packages = () => {
@@ -59,49 +59,16 @@ const Packages = () => {
         </h1>
       </div>
       {/*  */}
-      {/* <div className=" justify-center  text-center  flex gap-20 md:gap-5 place-items-center">
+
+      <div className="flex flex-col items-center px-9 py-16">
         {ServicesData.map((service, index) => (
           <div
             key={index} // Use the index as the key
             data-aos="fade-up"
             data-aos-delay={service.aosDelay}
-            className="rounded-2xl bg-white dark:bg-semi  w-96 cursor-pointer  hover:bg-primary dark:hover:bg-primary hover:text-white relative shadow-xl duration-high group max-w-[300px]"
+            className="rounded-2xl bg-gray-100 dark:bg-semi cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-400 hover:text-white relative shadow-xl duration-high group w-full md:w-[800px] mb-8 flex flex-col md:flex-row" // Added 'flex' class to make it flex container
           >
-            <div className="h-[100px]">
-              <img
-                src={service.Image}
-                alt=""
-                className="h-[130px] w-[130px] rounded-full block mx-auto transform -translate-y-14 group-hover:scale-105 duration-300 shadow-md"
-              />
-            </div>
-            <div className="p-4 text-center">
-              <h1 className="text-semi dark:text-primary group-hover:text-white duration-high text-2xl font-semibold line-clamp-2">
-                {service.name}
-              </h1>
-              <h1 className="text-xl font-bold">{service.title}</h1>
-              <p className="text-gray-500 group-hover:text-white duration-high text-sm line-clamp-2">
-                {service.description}
-              </p>
-        \
-              <a
-                href={`tel:${service.Number}`}
-                className="inline-block text-lg font-semibold py-3 text-primary group-hover:text-black duration-300"
-              >
-                Call: {service.Number}
-              </a>
-            </div>
-          </div>
-        ))}
-      </div> */}
-      <div className="flex flex-col items-center py-16">
-        {ServicesData.map((service, index) => (
-          <div
-            key={index} // Use the index as the key
-            data-aos="fade-up"
-            data-aos-delay={service.aosDelay}
-            className="rounded-2xl bg-gray-100 dark:bg-semi cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-400 hover:text-white relative shadow-xl duration-high group w-[800px] mb-8 flex" // Added 'flex' class to make it flex container
-          >
-            <div className="h-[300px]">
+            <div className="h-[300px] w-full md:w-[300px] mb-4 md:mb-0">
               <img
                 src={service.Image}
                 alt=""
@@ -113,27 +80,29 @@ const Packages = () => {
               <h1 className="text-semi dark:text-primary group-hover:text-white duration-high text-2xl font-semibold line-clamp-2">
                 {service.name}
               </h1>
-              <h1 className="text-7xl font-bold">{service.title}</h1>
+              {/* <h1 className="text-7xl font-bold">{service.title}</h1> */}
               <div className="flex justify-start flex-col items-start mt-4">
                 {" "}
                 {/* Added margin top */}
-                <p className="text-gray-800 group-hover:text-white duration-high text-lg line-clamp-2">
+                <p className="text-gray-800 dark:text-white group-hover:text-white duration-high text-lg line-clamp-2">
                   {" "}
                   {/* Added margin-right */}
                   {service.description}
                 </p>
-                <p className="text-gray-800  group-hover:text-white duration-high text-lg line-clamp-2 flex gap-2">
+                <p className="text-gray-800 dark:text-white  group-hover:text-white duration-high text-lg line-clamp-2 flex gap-2">
                   {" "}
                   {/* Added margin-right */}
-                  <p className="font-semibold text-gray-700 flex">Price:</p>
+                  <span className="font-semibold   text-white flex">
+                    Price:
+                  </span>
                   {service.price}
                 </p>
-                <p className="text-gray-800 group-hover:text-white duration-high text-lg line-clamp-2 flex gap-3">
+                <p className="text-gray-800 dark:text-white group-hover:text-white duration-high text-lg line-clamp-2 flex gap-3">
                   {" "}
                   {/* Removed unnecessary classes */}
-                  <p className="font-semibold text-gray-700 flex">
+                  <span className="font-semibold text-white flex">
                     Car Type:
-                  </p>{" "}
+                  </span>{" "}
                   {service.cartype}
                 </p>
                 <button

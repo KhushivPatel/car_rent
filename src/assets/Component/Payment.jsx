@@ -12,7 +12,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import GooglePayButton from "@google-pay/button-react";
-import payment from "../images/payment.jpeg";
+import payment from "../../../public/images/payment.jpeg";
 
 const Payment = () => {
   const navigate = useNavigate();

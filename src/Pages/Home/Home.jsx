@@ -1,6 +1,8 @@
 import React from "react";
-import carLightImage from "../../assets/images/car_light.svg";
-import carDarkImage from "../../assets/images/light_dp.png";
+import carLightImage from "../../../public/images/car_light.svg";
+import carDarkImage from "../../../public/images/light_dp.png";
+import t1 from "../../../public/images/t1.gif";
+import t2 from "../../../public/images/t2.gif";
 import Bestcar from "./Bestcar";
 import Services from "./Services";
 import CarList from "./CarList";
@@ -65,24 +67,25 @@ const Home = ({ theme }) => {
         <Count />
         <CarList />
         <Services />
-        <div className="container bg-white rounded-md  ">
+        <div className="container bg-white rounded-md">
           <h1
             data-aos="fade-up"
-            className="text-3xl  pt-5 sm:text-4xl font-semibold font-serif mb-3 text-semi justify-center items-center flex"
+            className="text-3xl sm:text-4xl font-semibold font-serif mb-3 text-semi justify-center items-center flex"
           >
             Rental Type
           </h1>
-          <div className="flex justify-between px-32">
-            <div className="text-center">
-              <img src="/src/assets/images/t1.gif" className="h-40" />
+          <div className="flex flex-col  sm:flex-row justify-center sm:justify-between mx-28 sm:px-0">
+            <div className="text-center mb-4 sm:mb-0 sm:mr-2">
+              <img src={t1} className="h-40" />
               <p className="text-4xl mt-2 text-blue-500">Self Drive</p>
             </div>
             <div className="text-center">
-              <img src="/src/assets/images/t2.gif" className="h-40" />
+              <img src={t2} className="h-40" />
               <p className="text-4xl mt-2 text-blue-500">With Driver</p>
             </div>
           </div>
         </div>
+
         <Bestcar />
         <Member />
         <Slider />

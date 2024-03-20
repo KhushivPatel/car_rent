@@ -3,18 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaCloudMoon, FaRoad } from "react-icons/fa";
 import { IoIosMan } from "react-icons/io";
 import { LuParkingCircle } from "react-icons/lu";
-import cd_1 from "../../assets/images/cd_1.png";
-import cd1 from "../../assets/images/cd1.jpg";
-import cd_2 from "../../assets/images/cd_2.png";
-import cd2 from "../../assets/images/cd2.png";
-import cd_3 from "../../assets/images/cd_3.png";
-import cd3 from "../../assets/images/cd3.jpg";
-import cd_4 from "../../assets/images/cd_4.png";
-import cd4 from "../../assets/images/cd4.png";
-import cd_5 from "../../assets/images/cd_5.png";
-import cd5 from "../../assets/images/cd5.png";
-import cd_6 from "../../assets/images/cd_6.png";
-import cd6 from "../../assets/images/cd6.png";
+import cd_1 from "../../../public/images/cd_1.png";
+import cd1 from "../../../public/images/cd1.jpg";
+import cd_2 from "../../../public/images/cd_2.png";
+import cd2 from "../../../public/images/cd2.png";
+import cd_3 from "../../../public/images/cd_3.png";
+import cd3 from "../../../public/images/cd3.jpg";
+import cd_4 from "../../../public/images/cd_4.png";
+import cd4 from "../../../public/images/cd4.png";
+import cd_5 from "../../../public/images/cd_5.png";
+import cd5 from "../../../public/images/cd5.png";
+import cd_6 from "../../../public/images/cd_6.png";
+import cd6 from "../../../public/images/cd6.png";
 
 const CarList = () => {
   const carList = [

@@ -9,7 +9,7 @@ import { db } from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
-import su from "../../assets/images/su.png";
+import su from "../../../public/images/su.png";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";

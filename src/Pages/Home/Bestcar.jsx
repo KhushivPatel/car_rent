@@ -46,8 +46,8 @@
 // export default Bestcar;
 
 import React from "react";
-import carabout from "../../assets/images/about_car.png";
-import carAboutDark from "../../assets/images/about_car_dark.svg";
+import carabout from "../../../public/images/about_car.png";
+import carAboutDark from "../../../public/images/about_car_dark.svg";
 import { Link } from "react-router-dom";
 
 const Bestcar = () => {

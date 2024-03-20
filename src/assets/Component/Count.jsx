@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import count from "../images/count.jpeg";
+import count from "../../../public/images/count.jpeg";
 
 const Count = () => {
   const [experiencedDrivers, setExperiencedDrivers] = useState(0);

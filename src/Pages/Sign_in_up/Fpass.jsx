@@ -27,16 +27,26 @@ const Fpass = () => {
     <section className="dark:bg-semi h-full">
       <div className="flex justify-center flex-wrap py-8 items-center max-w-6xl mx-auto shadow-lg rounded-2xl bg-primary">
         <div className="md:w-[68%] lg:w-[54%]">
-          <h1 className="text-7xl lg:text-7xl font-semibold font-serif" data-aos="fade-up">
+          <h1
+            className="text-7xl lg:text-7xl font-semibold font-serif"
+            data-aos="fade-up"
+          >
             Lost access?
           </h1>
-          <h3 className="text-white text-2xl font-serif" data-aos="fade-up" data-aos-delay="600">
-            Enter your email address, and we'll send you a link to reset your password and regain access.
+          <h3
+            className="text-white text-2xl font-serif"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            Enter your email address, and we'll send you a link to reset your
+            password and regain access.
           </h3>
         </div>
-        <div className="w-full md:w-[67%] lg:w-[40%] bg-white bg-opacity-50 h-fit px-5 mb-2 rounded-xl">
+        <div className="w-full md:w-[67%] lg:w-[40%] bg-white bg-opacity-50  mt-9 h-fit px-5 mb-2 rounded-xl">
           <form onSubmit={onSubmit}>
-            <h1 className="text-center font-semibold text-3xl mt-3 mb-3 text-semi">Forgot Password</h1>
+            <h1 className="text-center font-semibold text-3xl mt-3 mb-3 text-semi">
+              Forgot Password
+            </h1>
             <div className="relative mt-6 mb-6">
               <MdEmail className="absolute mt-3.5 ml-2 text-base cursor-pointer" />
               <input
@@ -51,7 +61,10 @@ const Fpass = () => {
             <div className="flex justify-between whitespace-nowrap text-sm">
               <p className="mb-6">
                 Don't have an account?{" "}
-                <Link to="/Sign_up" className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out ml-1">
+                <Link
+                  to="/Sign_up"
+                  className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out ml-1"
+                >
                   Register
                 </Link>
               </p>

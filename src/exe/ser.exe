@@ -1,21 +1,4 @@
-import React, { useRef } from "react";
-import ser from "../../../public/images/ser.jpeg";
-import ser1 from "../../../public/images/ser1.jpeg";
-import ser2 from "../../../public/images/ser2.jpeg";
-import ser3 from "../../../public/images/ser3.jpeg";
-import { Link } from "react-router-dom";
-import Form from "../Component/Form";
-
-const Ser = () => {
-  const formRef = useRef(null);
-
-  const scrollToForm = () => {
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-  return (
-    <div className="dark:bg-semi object-top">
+ <div className="dark:bg-semi object-top">
       {/* About Us Image Section */}
       <div className="relative">
         <img
@@ -32,7 +15,7 @@ const Ser = () => {
         </h1>
       </div>
       {/*  */}
-      <div className="bg-gray-100 dark:bg-gray-700  flex justify-center items-center">
+      <div className="bg-gray-100 dark:bg-gray-700 flex justify-center items-center">
         <div className="dark:bg-semi_primary dark:text-white duration-300 relative z-20">
           <div className="container min-h-[420px] flex">
             <div className="grid place-items-center grid-cols-1 sm:grid-cols-2">
@@ -44,20 +27,20 @@ const Ser = () => {
               >
                 <img
                   src={ser1}
-                  className="relative -z-10  sm:scale-125 drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)] rounded-lg h-[250px] w-[400px]  "
+                  className="relative -z-10  sm:scale-125 drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)] rounded-full h-[300px] w-[300px]  "
                 />
               </div>
               {/* Text Section */}
               <div className="order-1 sm:order-2 space-x-6 sm:pl-32 ">
                 <div>
                   <h1
-                    className="text-2xl mt-7 font-semibold font-serif"
+                    className="text-2xl font-semibold font-serif"
                     data-aos="fade-up"
                   >
                     Local Taxi Service
                   </h1>
                   <h3
-                    className="text-gray-400 mt-1 text-xl font-serif"
+                    className="text-gray-400 text-xl font-serif"
                     data-aos="fade-up"
                     data-aos-delay="600"
                   >
@@ -68,7 +51,7 @@ const Ser = () => {
                 </div>
 
                 <button
-                  className="rounded-md mt-9 mb-7 bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
+                  className="rounded-md mt-9 bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   onClick={scrollToForm}
@@ -81,33 +64,32 @@ const Ser = () => {
         </div>
       </div>
       {/*  */}
-
-      <div className="bg-gray-100 dark:bg-gray-700 flex justify-center items-center">
+      <div className="bg-white dark:bg-gray-600 flex justify-center items-center">
         <div className="dark:bg-semi_primary dark:text-white duration-300 relative z-20">
           <div className="container min-h-[420px] flex">
             <div className="grid place-items-center grid-cols-1 sm:grid-cols-2">
               {/* Video Section */}
               <div
-                className="order-2 sm:order-1"
-                data-aos="zoom-in"
+                className="order-1 sm:order-2  "
+                data-aos="flip-up"
                 data-aos-duration="1500"
               >
                 <img
                   src={ser2}
-                  className="relative -z-10  sm:scale-125 drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]rounded-lg h-[250px] w-[400px]  "
+                  className="relative -z-10  sm:scale-125 drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)] rounded-full h-[300px] w-[300px]  "
                 />
               </div>
               {/* Text Section */}
-              <div className="order-1 sm:order-2 space-x-6 sm:pl-32 ">
+              <div className="order-2 sm:order-1 space-y-6 sm:pr-32">
                 <div>
                   <h1
-                    className="text-2xl  mt-7 lg:text-2xl font-semibold font-serif"
+                    className="text-2xl lg:text-2xl font-semibold font-serif"
                     data-aos="fade-up"
                   >
                     Outstation Taxi Service
                   </h1>
                   <h3
-                    className="text-gray-400  mt-1 text-xl font-serif"
+                    className="text-gray-400 text-md font-serif"
                     data-aos="fade-up"
                     data-aos-delay="600"
                   >
@@ -118,7 +100,7 @@ const Ser = () => {
                   </h3>
                 </div>
                 <button
-                  className="rounded-md mt-9 mb-7 bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
+                  className="rounded-md bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   onClick={scrollToForm}
@@ -143,20 +125,20 @@ const Ser = () => {
               >
                 <img
                   src={ser3}
-                  className="relative -z-10  sm:scale-125 drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)]rounded-lg h-[250px] w-[400px]  "
+                  className="relative -z-10  sm:scale-125 drop-shadow-[2px_20px_6px_rgba(0,0,0,0.50)] rounded-full h-[300px] w-[300px]  "
                 />
               </div>
               {/* Text Section */}
               <div className="order-1 sm:order-2 space-x-6 sm:pl-32 ">
                 <div>
                   <h1
-                    className="text-2xl  mt-7 lg:text-2xl font-semibold font-serif"
+                    className="text-2xl lg:text-2xl font-semibold font-serif"
                     data-aos="fade-up"
                   >
                     One Way Taxi Service
                   </h1>
                   <h3
-                    className="text-gray-400 mt-1 text-xl font-serif"
+                    className="text-gray-400 text-xl font-serif"
                     data-aos="fade-up"
                     data-aos-delay="600"
                   >
@@ -167,7 +149,7 @@ const Ser = () => {
                   </h3>
                 </div>
                 <button
-                  className="rounded-md mt-9 mb-7 bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
+                  className="rounded-md mt-9 bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   onClick={scrollToForm}
@@ -184,7 +166,3 @@ const Ser = () => {
         <Form />
       </div>
     </div>
-  );
-};
-
-export default Ser;

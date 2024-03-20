@@ -148,7 +148,7 @@ const MyAccount = () => {
               <Link
                 onClick={handleSignOut}
                 to="/Sign_up"
-                className="rounded-full bg-white hover:bg-semi hover:text-primary transition duration-500 py-2 px-6 text-black"
+                className="rounded-full mb-9  bg-white hover:bg-semi hover:text-primary transition duration-500 py-2 px-6 text-black"
               >
                 Sign Out
               </Link>
@@ -158,7 +158,7 @@ const MyAccount = () => {
           {/*  */}
           {/* Profile Details Section */}
           <div
-            className="w-full md:w-[67%] lg:w-[40%]  bg-white bg-opacity-50 h-fit pt-6 px-5 mb-2 rounded-xl"
+            className="w-full mt-9 md:w-[67%] lg:w-[40%]  bg-white bg-opacity-50 h-fit pt-6 px-5 mb-2 rounded-xl"
             data-aos="flip-up"
           >
             <form onSubmit={handleSubmit}>
@@ -377,13 +377,13 @@ const MyAccount = () => {
         </div>
         <div className="flex justify-center">
           <Link
-            to={ {
+            to={{
               pathname: "/Payment",
               state: { subtotal: subtotal, bookings: bookings },
-            } }
-            onClick={(e)=>{
-                e.preventDefault();
-                navigate("/Payment", {state: {subtotal, bookings }})
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/Payment", { state: { subtotal, bookings } });
             }}
           >
             {console.log(bookings)}

@@ -3,10 +3,10 @@ import { FaBookOpenReader } from "react-icons/fa6";
 import { CiCalendar } from "react-icons/ci";
 import { FaRegFolder } from "react-icons/fa";
 import { TiMessages } from "react-icons/ti";
-import blog1 from "../../assets/images/blog1.jpg";
-import blog2 from "../../assets/images/blog2.jpg";
-import blog3 from "../../assets/images/blog3.jpg";
-import blog4 from "../../assets/images/blog4.jpg";
+import blog1 from "../../../public/images/blog1.jpg";
+import blog2 from "../../../public/images/blog2.jpg";
+import blog3 from "../../../public/images/blog3.jpg";
+import blog4 from "../../../public/images/blog4.jpg";
 import CommentForm from "../../assets/Component/CommentForm";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase";
@@ -36,14 +36,14 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div className="dark:bg-semi dark:text-white mb-9">
+    <div className="dark:bg-semi dark:text-white pb-9">
       {/*  */}
       <div>
         <div>
           <img
             src={blog1}
             alt=""
-            className="rounded-md mb-4 h-[800px] w-[1200px] pt-6  px-12  flex-shrink-0 "
+            className="rounded-md mb-4 w-full max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12"
             style={{ alignSelf: "flex-start" }}
           />
 
@@ -59,7 +59,7 @@ const Blogs = () => {
               </div>
               <div>
                 {/* Use Link component to navigate to the blogs page */}
-                <Link to="/blogs" className="flex items-center mr-4">
+                <Link to="/Blogs" className="flex items-center mr-4">
                   <FaRegFolder />
                   <p className="ml-2 text-gray-400">Blog</p>
                 </Link>
@@ -216,7 +216,7 @@ const Blogs = () => {
           <img
             src={blog2}
             alt=""
-            className="rounded-md mb-4 h-[800px] w-[1200px]  pt-6  px-12  flex-shrink-0 "
+            className="rounded-md mb-4 w-full max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12"
             style={{ alignSelf: "flex-start" }}
           />
 
@@ -232,7 +232,7 @@ const Blogs = () => {
               </div>
               <div>
                 {/* Use Link component to navigate to the blogs page */}
-                <Link to="/blogs" className="flex items-center mr-4">
+                <Link to="/Blogs" className="flex items-center mr-4">
                   <FaRegFolder />
                   <p className="ml-2 text-gray-400">Blog</p>
                 </Link>
@@ -412,7 +412,7 @@ const Blogs = () => {
           <img
             src={blog3}
             alt=""
-            className="rounded-md mb-4 h-[800px] w-[1200px]  pt-6  px-12  flex-shrink-0 "
+            className="rounded-md mb-4 w-full max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12"
             style={{ alignSelf: "flex-start" }}
           />
 
@@ -428,7 +428,7 @@ const Blogs = () => {
               </div>
               <div>
                 {/* Use Link component to navigate to the blogs page */}
-                <Link to="/blogs" className="flex items-center mr-4">
+                <Link to="/Blogs" className="flex items-center mr-4">
                   <FaRegFolder />
                   <p className="ml-2 text-gray-400">Blog</p>
                 </Link>
@@ -649,7 +649,7 @@ const Blogs = () => {
           <img
             src={blog4}
             alt=""
-            className="rounded-md mb-4 h-[800px] w-[1200px]  pt-6  px-12  flex-shrink-0 "
+            className="rounded-md mb-4 w-full max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12"
             style={{ alignSelf: "flex-start" }}
           />
 
@@ -665,7 +665,7 @@ const Blogs = () => {
               </div>
               <div>
                 {/* Use Link component to navigate to the blogs page */}
-                <Link to="/blogs" className="flex items-center mr-4">
+                <Link to="/Blogs" className="flex items-center mr-4">
                   <FaRegFolder />
                   <p className="ml-2 text-gray-400">Blog</p>
                 </Link>

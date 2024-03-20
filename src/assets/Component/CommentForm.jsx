@@ -39,13 +39,13 @@ const CommentForm = ({ updateCommentCount }) => {
   };
 
   return (
-    <div className=" max-w-auto w-[500px] my-8 justify-start  py-3 px-5 items-start ">
+    <div className=" max-w-auto w-[500px]  my-8 justify-start  py-3 px-5 items-start ">
       <h2 className="text-2xl font-bold mb-4">Leave a Comment</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label
             htmlFor="message"
-            className="block text-lg font-medium text-gray-700"
+            className="block text-lg font-medium dark:text-white text-gray-700"
           >
             Comment
           </label>
@@ -61,7 +61,7 @@ const CommentForm = ({ updateCommentCount }) => {
         <div className="">
           <label
             htmlFor="name"
-            className="block text-lg font-medium text-gray-700"
+            className="block text-lg font-medium dark:text-white text-gray-700"
           >
             Name
           </label>
@@ -77,7 +77,7 @@ const CommentForm = ({ updateCommentCount }) => {
         <div>
           <label
             htmlFor="email"
-            className="block text-lg font-medium text-gray-700"
+            className="block text-lg font-medium dark:text-white text-gray-700"
           >
             Email
           </label>

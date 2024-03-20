@@ -7,36 +7,36 @@ import {
   FaLocationArrow,
 } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
-import logo2 from "../images/logo_2.png";
+import logo from "../../../public/images/logo.png";
+import logo2 from "../../../public/images/logo_2.png";
 import { FaWhatsapp } from "react-icons/fa";
 
 const FooterLinks = [
   {
     title: "Home",
-    link: "/#",
+    link: "/Home",
   },
   {
     title: "Services",
-    link: "/",
+    link: "/Ser",
   },
   {
     title: "Packages",
-    link: "/",
+    link: "/Packages",
   },
 ];
 const Footerlink = [
   {
     title: "About us",
-    link: "/#",
+    link: "/Aboutus",
   },
   {
     title: "Contact Us",
-    link: "/",
+    link: "/Contactus",
   },
   {
     title: "Blogs",
-    link: "/",
+    link: "/Blogs",
   },
 ];
 
@@ -52,9 +52,9 @@ const Footer = ({ theme, setTheme }) => {
               className=" text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl  "
             >
               {theme == "dark" ? (
-                <img src={logo2} className={"cursor-pointer h-14"} />
+                <img src={logo2} className={"cursor-pointer h-28"} />
               ) : (
-                <img src={logo} className={"cursor-pointer h-14"} />
+                <img src={logo} className={"cursor-pointer h-28"} />
               )}
             </Link>
             <p className="text-gray-600 dark:text-white/70  lg:pr-24 pt-3">
