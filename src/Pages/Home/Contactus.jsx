@@ -216,7 +216,7 @@ const Contactus = () => {
         </h3>
       </div>
 
-      <div className="flex  flex-wrap py-8 items-center max-w-6xl mx-auto sm:mx-9 justify-center shadow-lg rounded-2xl bg-primary">
+      <div className="flex  sm:px-12 flex-wrap py-8 items-center max-w-6xl mx-auto sm:mx-9 justify-center shadow-lg rounded-2xl bg-primary">
         <div className="md:w-full lg:w-[54%]">
           <h1
             className="text-5xl lg:text-5xl font-semibold font-serif"

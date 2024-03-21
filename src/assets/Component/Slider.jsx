@@ -33,8 +33,9 @@ const Slider = () => {
             <img
               src={image1}
               alt="Slide 1"
-              className="w-full h-[500px] object-cover"
+              className="w-full max-w-full h-auto object-cover"
             />
+
             <p className="text-semi absolute left-1 top-3 font-medium max-w-[90%] bg-primary shadow-lg opacity-90 p-2 rounded-br-3xl">
               SWIFT
             </p>
@@ -46,7 +47,7 @@ const Slider = () => {
             <img
               src={image2}
               alt="Slide 2"
-              className="w-full h-[500px] object-cover "
+              className="w-full max-w-full h-auto object-cover "
             />
             <p className="text-semi  absolute left-1 top-3 font-medium max-w-[90%] bg-primary shadow-lg opacity-90 p-2 rounded-br-3xl">
               HONDA
@@ -58,7 +59,7 @@ const Slider = () => {
             <img
               src={image3}
               alt="Slide 3"
-              className="w-full h-[500px] object-cover "
+              className="w-full max-w-full h-auto object-cover"
             />
             <p className="text-semi  absolute left-1 top-3 font-medium max-w-[90%] bg-primary shadow-lg opacity-90 p-2 rounded-br-3xl">
               TOYTO
