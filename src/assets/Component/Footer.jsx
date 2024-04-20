@@ -57,10 +57,7 @@ const Footer = ({ theme, setTheme }) => {
                 <img src={logo} className={"cursor-pointer h-28"} />
               )}
             </Link>
-            <p className="text-gray-600 dark:text-white/70  lg:pr-24 pt-3">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-              alias cum
-            </p>
+            
             <p className="text-gray-500 mt-4">
               Drive Your Dreams: Where Every Journey Begins
             </p>

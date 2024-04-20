@@ -28,7 +28,7 @@ const Packages = () => {
       description: "BHOPAL to INDORE",
       price: "300",
       cartype: "Sedan",
-      aosDelay: "500",
+      aosDelay: "200",
       Number: "+91 123456789",
     },
     {
@@ -37,7 +37,7 @@ const Packages = () => {
       description: "BHOPAL to ALL INDIA",
       price: "300",
       cartype: "Sedan",
-      aosDelay: "1000",
+      aosDelay: "400",
       Number: "+91 123456789",
     },
   ];
@@ -108,7 +108,7 @@ const Packages = () => {
                 <button
                   className="rounded-md mt-9 bg-primary hover:bg-primary transition duration-500 py-2 px-6 text-black"
                   data-aos="fade-up"
-                  data-aos-duration="1500"
+                  data-aos-duration="200"
                   onClick={scrollToForm}
                 >
                   Book Now

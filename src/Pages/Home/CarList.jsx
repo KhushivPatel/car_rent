@@ -38,7 +38,7 @@ const CarList = () => {
       rs: 17,
       image: cd_2,
       image2: cd2,
-      aosDelay: 500,
+      aosDelay: 100,
     },
     {
       name: "TEMPO TRAVELER(13 SEATS)",
@@ -49,7 +49,7 @@ const CarList = () => {
       rs: 18,
       image: cd_3,
       image2: cd3,
-      aosDelay: 1000,
+      aosDelay: 200,
     },
 
     {
@@ -61,7 +61,7 @@ const CarList = () => {
       rs: 13,
       image: cd_4,
       image2: cd4,
-      aosDelay: 1000,
+      aosDelay: 0,
     },
 
     {
@@ -73,7 +73,7 @@ const CarList = () => {
       rs: 20,
       image: cd_5,
       image2: cd5,
-      aosDelay: 1000,
+      aosDelay: 100,
     },
     {
       name: "INNOVA",
@@ -84,11 +84,10 @@ const CarList = () => {
       rs: 17,
       image: cd_6,
       image2: cd6,
-      aosDelay: 0,
+      aosDelay: 200,
     },
   ];
 
- 
   return (
     <div className="container mt-8">
       <h1
@@ -172,4 +171,4 @@ const CarInfo = ({ icon, text }) => (
 );
 
 export default CarList;
-``;
+

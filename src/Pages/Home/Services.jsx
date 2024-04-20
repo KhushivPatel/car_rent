@@ -23,7 +23,7 @@ const skillsData = [
     link: "#",
     description:
       "We securely process all of your credit card information through our payment gateway. We do not store or retain any credit card information.",
-    aosDelay: "500",
+    aosDelay: "100",
   },
   {
     name: "Reliable Transportation",
@@ -33,7 +33,7 @@ const skillsData = [
     link: "#",
     description:
       "You can rest assured knowing that our taxi service is reliable because we are available 24/7, 365 days a year at reasonable rates for everyone.",
-    aosDelay: "1000",
+    aosDelay: "200",
   },
   {
     name: "Free Home Delivery",
@@ -43,7 +43,7 @@ const skillsData = [
     link: "#",
     description:
       "You can rest assured knowing that our taxi service is reliable because we are available 24/7, 365 days a year at reasonable rates for everyone.",
-    aosDelay: "1500",
+    aosDelay: "300",
   },
 ];
 const Services = () => {
@@ -71,7 +71,6 @@ const Services = () => {
                 <div className="grid place-items-center">{skill.icon}</div>
                 <h1 className="text-2xl font-bold">{skill.name}</h1>
                 <p>{skill.description}</p>
-                
               </div>
             ))}
           </div>

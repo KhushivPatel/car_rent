@@ -163,3 +163,84 @@
         </div>
         {/* Rest of the content */}
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Check if any field is empty
+  if (
+    !selectedCar ||
+    !selectedPickupPlace ||
+    !selectedDropoffPlace ||
+    !selectedPackage ||
+    !pickupDate ||
+    !dropoffDate
+  ) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  // Check if drop-off date is greater than pick-up date
+  if (dropoffDate <= pickupDate) {
+    alert("Drop-off date must be greater than pick-up date");
+    return;
+  }
+
+  try {
+    let updatedPrice = "1,000"; // Default price
+
+    // Update price based on selected package
+    if (selectedPackage === "Local Trip") {
+      updatedPrice = "4,500"; // Update price for local trip
+    }
+
+    // Set the price state
+    setPrice(updatedPrice);
+
+    // Process form submission
+    toast.success("Form submitted successfully!");
+
+    // Add booking to the database
+    await handleCreate();
+
+    // Reset form fields
+    setPickupDate(null);
+    setDropoffDate(null);
+    setSelectedPickupPlace("");
+    setSelectedDropoffPlace("");
+    setSelectedPackage("");
+    setSelectedCar("");
+    setFormSubmitted(true);
+  } catch (error) {
+    console.error("Error submitting form: ", error);
+    toast.error(
+      "An error occurred while submitting the form. Please try again."
+    );
+  }
+};

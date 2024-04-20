@@ -1,0 +1,240 @@
+const MyAccount = () => {
+  const [subtotal, setSubtotal] = useState(0); // Initialize subtotal state
+  const [changeDetail, setChangeDetail] = useState(false);
+  const auth = getAuth();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+
+  //
+
+  // useEffect(() => {
+  //   if (auth.currentUser) {
+  //     setFormData({
+  //       name: auth.currentUser.displayName || "",
+  //       email: auth.currentUser.email || "",
+  //     });
+  //   }
+  // }, [auth.currentUser]);
+  useEffect(() => {
+    if (auth.currentUser) {
+      setFormData({
+        name: auth.currentUser.displayName || "",
+        email: auth.currentUser.email || "",
+      });
+    } else {
+      console.error("Current user not found.");
+    }
+  }, [auth.currentUser]);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth); // Fixed signOut call
+      navigate("/"); // Redirect to home or any other route after sign-out
+      toast.success("You have been signed out successfully!");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast.error("An error occurred while signing out. Please try again.");
+    }
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+  // console.log(auth.currentUser);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (auth.currentUser.displayName !== formData.name) {
+        await updateProfile(auth.currentUser, {
+          displayName: formData.name,
+        });
+
+        const docRef = doc(db, "users", auth.currentUser.email); //uid
+        await updateDoc(docRef, { name: formData.name });
+      }
+      toast.success("Profile is updated");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast.error("Could not update the profile details");
+    }
+  };
+
+  // Profile picture upload related state and functions
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    // const listingRef = collection(db, "listings");
+    // console.log(auth.currentUser.uid);
+    // const q = query(
+    //   listingRef,
+    //   where("userRef", "==", auth.currentUser.uid),
+
+    //   orderBy("timestamp", "desc")
+    // );
+    // console.log(listingRef);
+    // const querySnap = await getDocs(q);
+    const fetchData = async () => {
+      try {
+        if (!auth.currentUser) {
+          console.error("Current user not found.");
+          return;
+        }
+
+        const value = collection(db, "Booking");
+        const q = query(value, where("Email", "==", auth.currentUser.email));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBookings(data);
+      } catch (error) {
+        console.error("Error fetching documents: ", error);
+      }
+    };
+
+    // const fetchData = async () => {
+    //   try {
+    //     const value = collection(db, "Booking");
+
+    //     const q = query(value, where("Email", "==", auth.currentUser.email));
+    //     const querySnapshot = await getDocs(q);
+    //     const data = querySnapshot.docs.map((doc) => ({
+    //       id: doc.id,
+    //       ...doc.data(),
+    //     }));
+    //     setBookings(data);
+    //   } catch (error) {
+    //     console.error("Error fetching documents: ", error);
+    //   }
+    // };
+    fetchData();
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          {/*  */}
+
+        {/* <div className="container mx-auto px-4 py-8 ">
+          <h1 className="text-3xl font-bold text-center dark:text-primary mb-7">
+            My bookings
+          </h1>
+          <div className="justify-center   ">
+            {bookings.length > 0 ? (
+              bookings.map((booking) => (
+                <div
+                  className="bg-white  dark:bg-slate-500 rounded-lg shadow-md p-6 mb-4 flex items-center justify-between"
+                  key={booking.id}
+                >
+                  <div className="flex items-center">
+                    <img
+                      src={booking.carImage}
+                      alt={booking.selectedCar}
+                      className="w-[200px] h-[120px] border object-cover mr-4"
+                    />
+
+                    <div>
+                      <p className="mb-2 text-xl font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
+                          Car:
+                        </span>{" "}
+                        {booking.selectedCar}
+                      </p>
+                      <p className="mb-2 font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
+                          Pickup Place:
+                        </span>{" "}
+                        {booking.selectedPickupPlace}
+                      </p>
+                      <p className="mb-2 font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
+                          Drop-off Place:
+                        </span>{" "}
+                        {booking.selectedDropoffPlace}
+                      </p>
+                      <p className="mb-2 font-semibold dark:text-white">
+                        <span className="font-semibold text-gray-500 dark:text-black">
+                          Package:
+                        </span>{" "}
+                        {booking.selectedPackage}
+                      </p>
+                      {booking.pickupdate && (
+                        <p className="text-md font-semibold mb-2 dark:text-white">
+                          <span className="font-semibold text-gray-500 dark:text-black">
+                            Pickup Date:{" "}
+                          </span>
+                          {new Date(
+                            booking.pickupdate.seconds * 1000
+                          ).toLocaleString()}
+                        </p>
+                      )}
+                      {booking.dropoffdate && (
+                        <p className="text-md font-medium mb-2 dark:text-white">
+                          <span className="font-semibold text-gray-500 dark:text-black">
+                            Drop-off Date:{" "}
+                          </span>
+                          {new Date(
+                            booking.dropoffdate.seconds * 1000
+                          ).toLocaleString()}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <p className="text-black  text-2xl font-semibold">Price=</p>
+                    <p className="text-black  text-2xl font-semibold">
+                      {booking.carPrice}
+                    </p>
+                  
+                  </div>
+                  <button
+                    className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
+                    onClick={() => handleDelete(booking.id)}
+                  >
+                    <MdDelete className="text-2xl" />
+                  </button>
+                </div>
+              ))
+            ) : (
+              <div className="container mx-auto px-4 py-8 bg-white rounded-lg shadow-md p-6 mb-4 text-center dark:bg-gray-300 ">
+                <p className="text-xl text-red-500">No bookings found😕</p>
+              </div>
+            )}
+            {bookings.length > 0 && (
+              <div className="bg-white  dark:bg-slate-400 rounded-lg shadow-md p-6 mb-4 flex items-center justify-between">
+                <div>
+                  <p className="text-xl font-semibold dark:text-white">
+                    Subtotal
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xl font-semibold  dark:text-white">
+                    ₹ {subtotal}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div> */}

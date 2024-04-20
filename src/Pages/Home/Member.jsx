@@ -18,14 +18,14 @@ const Member = () => {
       name: "Piyush Agarwal",
       Image: v,
       description: "Good car, Good driver.",
-      aosDelay: "500",
+      aosDelay: "100",
       Number: "+91 123456789",
     },
     {
       name: "Raj Kumar",
       Image: y,
       description: "Awesome service.",
-      aosDelay: "1000",
+      aosDelay: "200",
       Number: "+91 123456789",
     },
   ];
